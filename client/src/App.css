@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 18px;
+  line-height: 40px ;
+}
+
+.nav-content{
+  background-image: url('./assets/img/banner.jpg');
+}
+
+.home-content{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.container{
+  height: 100%;
+}
+.boxe-content{
+  height: 100vh;
+}
+
+.tarifs-content{
+  height: 100vh;
+}
+
+.textarea_contact{
+  font-family: "HK Compakt";
+  font-style: normal;
+  font-weight: 500;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  max-width: 500px;
+  padding-left: 20px;
+  outline: none;
+  color: rgb(25, 13, 51);
+  padding-top: 18px;
+  height: 8em;
+  resize: none;
+}
+
+.acces-map{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.transports :first-child{
+  font-size: xx-large;
+  margin: 10px 10px;
+}
+
+.transports p{
+  margin-left: 10px;
+}
+
+
+
+.video{
+  text-align: center;
+}
+
+
+.pageFacebook{
+  display: flex;
+  flex-direction: column;
+  margin-top: 110px;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+
+
+.certif{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.inscription-content{
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100vh;
+}
+
+.horaires{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+.contact-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left:50px;
+}
+
+/* Social Media */
+.socialIcon>*:hover{
+  color: white;
+  transition: 0.5s;
+}
+
+.socialIcon {
+  color: #FFFFFFA6;
+  cursor: pointer;
+
+}
+
+.socialIcon :nth-of-type(2) {
+  margin: 0 5px;
+}
+
+.socialMediaInFaceBookPage{
+  display: none;
+}
+
+
+
+/* tab */
+table {
+  border:3px solid black;
+  border-collapse:collapse;
+  width:90%;
+  margin:135px auto;
+  }
+  
+  thead, tfoot {
+  background-color:#D0E3FA;
+  border:1px solid #6495ed;
+  }
+  tbody {
+  background-color:#FFFFFF;
+  border:1px solid black;
+  }
+  th {
+  font-family:monospace;
+  border:1px dotted black;
+  padding:5px;
+  background-color:#EFF6FF;
+  width:15%;
+  }
+  td {
+  font-family:sans-serif;
+  font-size:80%;
+  border:1px solid black;
+  padding:5px;
+  text-align:left;
+  }
+  caption {
+  font-family:sans-serif;
+  }
+
+
+    /* Judo & JJB */
+  th[class='eveil'], td[class='eveil']{
+    background-color: tomato;
+  }
+  th[class='baby-presPoussin'], td[class='baby-presPoussin']{
+    background-color: steelblue;
+  }
+  th[class='poussin-benjamin'], td[class='poussin-benjamin']{
+    background-color: papayawhip;
+  }
+  th[class='ados-adultes'], td[class='ados-adultes']{
+    background-color: orange;
+  }
+
+  /* MMA */
+  th[class='mma-kids'], td[class='mma-kids']{
+    background-color: seagreen;
+  }
+  th[class='mma-ados-adultes'], td[class='mma-ados-adultes']{
+    background-color: rgb(0, 179, 255);
+  }
+
+  /* Boxe */
+   th[class='boxe-kids'], td[class='boxe-kids']{
+    background-color: #fb1;
+  }
+  th[class='boxe-lady'], td[class='boxe-lady']{
+    background-color: pink;
+  }
+  th[class='boxe-mixte'], td[class='boxe-mixte']{
+    background-color: rgb(17, 255, 172);
+  }
+
+  /* centrer le texte dans les colonnes */
+td, th{
+    text-align: center;
+  }
+  .certif img{
+   margin: auto;
+  }
+
+
