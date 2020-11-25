@@ -7,6 +7,8 @@ import banner from "../../assets/img/banner.jpg";
 import SocialMedias from "../SocialMedias";
 import DarkModeToggle from "react-dark-mode-toggle";
 
+
+
 const { Header, Content, Footer } = Layout;
 
 const contentStyle = {
@@ -48,15 +50,20 @@ const AMRLayout = ({ children }) => {
   };
 
   return (
-    <Layout className={isDarkMode ? "dark-mode" : "light-mode"}>
-      <Header className={isDarkMode ? "dark-mode" : "light-mode"}>
+    <Layout 
+    // className={isDarkMode ? "dark-mode" : "light-mode"}
+    >
+      <Header 
+      // className={isDarkMode ? "dark-mode" : "light-mode"}
+      style={{backgroundColor:"#001529"}}
+      >
         <Menu
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
-          theme={isDarkMode ? "dark" : "light"}
+          theme={"dark"}
           mode="horizontal"
           defaultSelectedKeys={["1"]}
         >

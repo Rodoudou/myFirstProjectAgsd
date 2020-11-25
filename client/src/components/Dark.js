@@ -5,6 +5,7 @@ const Dark = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     return (
           <DarkModeToggle
+          className="toggle"
             onChange={setIsDarkMode}
             checked={isDarkMode}
             size={80}

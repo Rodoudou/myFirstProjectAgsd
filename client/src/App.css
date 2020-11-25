@@ -1,4 +1,6 @@
+@import '~antd/dist/antd.css';
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 body{
   margin: 0px;
   padding: 0px;
@@ -14,23 +16,26 @@ body{
 .modal-horaires{
 margin: auto;
 width: 500px;
-height: 500px;
-}
+height: 500px;}
 
-.dark-mode{
-  background-color: #001529;
-  color: white
-}
 
-.light-mode{
-  background-color: #FFFFFF;
-  color: black;
+
+.ant-menu{
+background-color: #001529;
+color : white;
 }
+.ant-menu ul{
+  color : red;
+  }
 
 .nav-content{
   background-image: url('./assets/img/banner.jpg');
 }
-
+.ant-menu button{
+  width: 50%;
+  height: 50%;
+   
+}
 .home-content{
  display: flex;
  flex-direction: column;
