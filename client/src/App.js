@@ -16,11 +16,11 @@ import Boxe from "./components/horaires-boxe";
 // library.add(faCoffee, faKey);
 
 
-const App = () => {
+const App = ({isDarkMode}) => {
   return (
     <Layout>
       <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
           <Route path="contact" element={<Contact />} />
           <Route path="inscription" element={<Inscription />} />
           <Route path="/judo" element={<HorairesJudoJjb />} />

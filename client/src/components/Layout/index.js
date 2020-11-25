@@ -1,11 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
-import {Modal, Image } from "react-bootstrap";
+import { Layout, Menu, Modal, Image } from "antd";
 import MyCard from "../MyCard";
 import Tarifs from "../../containers/tarifs";
-import banner from '../../assets/img/banner.jpg';
+import banner from "../../assets/img/banner.jpg";
 import SocialMedias from "../SocialMedias";
+import DarkModeToggle from "react-dark-mode-toggle";
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,38 +14,59 @@ const contentStyle = {
   flexWrap: "wrap",
   padding: " 3rem 3rem",
   justifyContent: "center",
+  // backgroundColor: "#6AC7FF",
   footer: {
     backgroundColor: "#001529",
-    color:"#FFFFFFA6",
+    color: "#FFFFFFA6",
     display: "flex",
     flexWrap: "wrap",
     padding: " 3rem 3rem",
     justifyContent: "center",
   },
 };
+// Toglle Button for Dark Mode
 
 const AMRLayout = ({ children }) => {
-  const [showHoraire, setShowHoraires] = useState(false);
-  const [showTarifs, setShowTarifs] = useState(false);
+  // STATES
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [planingShow, setPlaningShow] = useState(false);
+  const [tarifShow, setTarifShow] = useState(false);
 
-  const handleCloseHoraires = () => setShowHoraires(false);
-  const handleCloseTarifs = () => setShowTarifs(false);
-  
-  const handleShowHoraires = () => setShowHoraires(true);
-  const handleShowTarifs= ()=> setShowTarifs(true);
+  const fermerModaleHoraires = () => {
+    setPlaningShow(true);
+  };
+
+  const fermerModaleTarifs = () => {
+    setTarifShow(true);
+  };
+
+  // The toggle Dark Mode component
+  const Dark = () => {
+    return (
+      <DarkModeToggle onChange={setIsDarkMode} checked={isDarkMode} size={80} />
+    );
+  };
 
   return (
-    <Layout className="layout-content">
-
-      <Header >
-        <Menu style={{marginLeft:'300px'}} theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+    <Layout className={isDarkMode ? "dark-mode" : "light-mode"}>
+      <Header className={isDarkMode ? "dark-mode" : "light-mode"}>
+        <Menu
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          theme={isDarkMode ? "dark" : "light"}
+          mode="horizontal"
+          defaultSelectedKeys={["1"]}
+        >
           <Menu.Item key="1">
             <Link to="/">Accueil</Link>
           </Menu.Item>
-          <Menu.Item  onClick={handleShowHoraires} key="2">
-           Horaires
+          <Menu.Item onClick={fermerModaleHoraires} key="2">
+            Horaires
           </Menu.Item>
-          <Menu.Item  onClick={handleShowTarifs}  key="3">
+          <Menu.Item onClick={fermerModaleTarifs} key="3">
             Tarifs
           </Menu.Item>
 
@@ -56,33 +77,41 @@ const AMRLayout = ({ children }) => {
             <Link to="/contact">Contact</Link>
           </Menu.Item>
 
-        <Menu.Item >
-            <SocialMedias/>
-        </Menu.Item>
+          <Menu.Item>
+            <SocialMedias />
+          </Menu.Item>
+          <Dark />
         </Menu>
 
-
-
-        {/* MODALE Horaires*/}
-        <Modal show={showHoraire} onHide={handleCloseHoraires} onClick={handleCloseHoraires}>
-          <Modal.Header style={{marginLeft:'20%'}} closeButton>
-        <MyCard/>
-          </Modal.Header>
+        {/* Modal pour afficher les horraires */}
+        <Modal
+          title="Horaires des cours"
+          centered
+          visible={planingShow}
+          onOk={() => setPlaningShow(false)}
+          onCancel={() => setPlaningShow(false)}
+          width={500}
+        >
+          <MyCard />
         </Modal>
 
-        {/* MODALE Tarifs */}
-        <Modal show={showTarifs} onHide={handleCloseTarifs} onClick={handleCloseTarifs}>
-          <Modal.Header style={{marginLeft:'20%'}} closeButton>
-        <Tarifs/>
-          </Modal.Header>
+        {/* Modal pour afficher les Tarifs */}
+        <Modal
+          title="tarifs des cours"
+          centered
+          visible={tarifShow}
+          onOk={() => setTarifShow(false)}
+          onCancel={() => setTarifShow(false)}
+          width={500}
+        >
+          <Tarifs />
         </Modal>
-        
       </Header>
       <Image src={banner} fluid />
       <Content style={contentStyle} children={children} />
       <Footer style={contentStyle.footer}>
         &#169;Create by Redouane Amrani with React 2020
-        <SocialMedias/>
+        <SocialMedias />
       </Footer>
     </Layout>
   );

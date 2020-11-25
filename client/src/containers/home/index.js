@@ -3,7 +3,7 @@ import Article from "../../components/article";
 import Map from "../../components/map";
 
 
-function Home() {
+function Home({isDarkMode}) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Home() {
         <p>En chargement...</p>
       ) : (
         <section className="home-content" >
-          <Article />
+          <Article isDarkMode={isDarkMode}/>
           <Map />
         </section>
       )}

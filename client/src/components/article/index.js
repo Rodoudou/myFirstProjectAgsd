@@ -1,14 +1,14 @@
 import React from "react";
 
-function Article() {
+const Article = ({isDarkMode}) => {
   return (
     <section>
-      <h1>
+      <p style={{fontSize:"35px"}}>
         AGSD COMBAT Saint-Denis 93200 : Mixed Martial Arts (MMA), Judo, Jiu
         Jitsu Brésilien (JJB), Grappling, Boxe Muay Thaï et Lady Boxing à
         Saint-Denis
-      </h1>
-      <br/>
+      </p>
+      <br />
 
       <div className="article-home">
         <p>Femmes et Hommes de tous âges</p>
@@ -41,12 +41,18 @@ function Article() {
         </p>
       </div>
       <div className="video">
-      <iframe width="496" height="279" title="agsdcombat" src="https://www.youtube.com/embed/PYpg6k44ZNw" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscree="true">
-
-      </iframe>
+        <iframe
+          width="496"
+          height="279"
+          title="agsdcombat"
+          src="https://www.youtube.com/embed/PYpg6k44ZNw"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscree="true"
+        ></iframe>
       </div>
     </section>
   );
-}
+};
 
 export default Article;

@@ -6,6 +6,26 @@ body{
   font-size: 18px;
   line-height: 40px ;
 }
+/* Modale antd */
+.ant-modal-footer {
+  display: none;
+}
+
+.modal-horaires{
+margin: auto;
+width: 500px;
+height: 500px;
+}
+
+.dark-mode{
+  background-color: #001529;
+  color: white
+}
+
+.light-mode{
+  background-color: #FFFFFF;
+  color: black;
+}
 
 .nav-content{
   background-image: url('./assets/img/banner.jpg');
@@ -16,6 +36,7 @@ body{
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ 
 }
 .container{
   height: 100%;
