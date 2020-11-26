@@ -4,6 +4,7 @@ import { Layout, Menu, Modal, Image } from "antd";
 import MyCard from "../MyCard";
 import Tarifs from "../../containers/tarifs";
 import banner from "../../assets/img/banner.jpg";
+import FacebookPage from "../../components/FacebookPage";
 import SocialMedias from "../SocialMedias";
 import DarkModeToggle from "react-dark-mode-toggle";
 
@@ -97,7 +98,7 @@ const AMRLayout = ({ children }) => {
           visible={planingShow}
           onOk={() => setPlaningShow(false)}
           onCancel={() => setPlaningShow(false)}
-          width={500}
+          width={300}
         >
           <MyCard />
         </Modal>
@@ -119,6 +120,7 @@ const AMRLayout = ({ children }) => {
       <Footer style={contentStyle.footer}>
         &#169;Create by Redouane Amrani with React 2020
         <SocialMedias />
+        <FacebookPage/>
       </Footer>
     </Layout>
   );

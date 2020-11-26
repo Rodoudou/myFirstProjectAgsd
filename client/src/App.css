@@ -31,11 +31,14 @@ color : white;
 .nav-content{
   background-image: url('./assets/img/banner.jpg');
 }
-.ant-menu button{
+/* ca supprime le toggle */
+.ant-menu>button{
+  /* display: none; */
+  background-color: tomato;
   width: 50%;
-  height: 50%;
-   
+  height: 100%;
 }
+
 .home-content{
  display: flex;
  flex-direction: column;
