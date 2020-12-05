@@ -7,9 +7,6 @@ const FacebookPage = ({ handleClickFaceBook }) => {
     setIsloading(false);
   }, []);
 
-  const handleClickFaceBookids = () => {
-    window.location = "https://www.facebook.com/agsdcombatenfants/";
-  };
   return (
     <div className="pageFacebook">
       {isloading ? (
@@ -19,7 +16,6 @@ const FacebookPage = ({ handleClickFaceBook }) => {
       ) : (
         <>
           <div className="pageAdultes" style={{marginBottom:5}}>
-            {/* <h3 onClick={handleClickFaceBook}>AGSD COMBAT</h3> */}
             <div
               className="fb-page"
               data-href="https://www.facebook.com/agsdcombat/"

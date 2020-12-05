@@ -36,7 +36,9 @@ const activity = disciplines.map((sport, i) => {
           style={{ width: 240 }}
           cover={<img alt={sport.name} src={sport.src} />}
         >
-          <Meta title={sport.name} description="Horaires" />
+          <Meta title={sport.name} 
+          // description="Horaires" 
+          />
         </Card>
       </Link>
     </div>

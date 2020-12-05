@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import Map from "../../components/map";
-import "../../App.css";
+// import Map from "../../components/map";
 // import FacebookPage from "../../components/FacebookPage";
 
 const Contact = () => {
@@ -116,8 +115,8 @@ const Contact = () => {
             </div>
 
             <div className="acces-map">
-              <h2>ACCÈS</h2>
-              <Map />
+            <p style={{fontSize:"35px"}}>ACCÈS</p>
+              {/* <Map /> */}
             </div>
           </div>
         </div>

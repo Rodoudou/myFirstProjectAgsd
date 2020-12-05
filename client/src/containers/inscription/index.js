@@ -24,7 +24,7 @@ function Inscription() {
                 <div className="inscription-content">
                   {/* <FacebookPage /> */}
                   <div>
-                    <h2>Comment s’abonner ?</h2>
+                  <p style={{fontSize:"35px"}}>Comment s’abonner ?</p>
                     <p>
                       Pour vous inscrire rien de plus simple, il vous suffit de
                       télécharger et de remplir la feuille d’inscription et y

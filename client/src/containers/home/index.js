@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Article from "../../components/article";
-import Map from "../../components/map";
+// import Map from "../../components/map";
 
 
 function Home({isDarkMode}) {
@@ -21,7 +21,7 @@ function Home({isDarkMode}) {
       ) : (
         <section className="home-content" >
           <Article isDarkMode={isDarkMode}/>
-          <Map />
+          {/* <Map /> */}
         </section>
       )}
     </div>

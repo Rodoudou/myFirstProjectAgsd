@@ -20,6 +20,7 @@ import HorairesJudoKids from "./components/Horaires/judo/HorairesJudoKids";
 import HorairesJudoAdultes from "./components/Horaires/judo/HorairesJudoAdultes";
 import HorairesMmaAdultes from "./components/Horaires/mma/HorairesMmaAdultes";
 import HorairesMmaKids from "./components/Horaires/mma/HorairesMmaKids";
+import FicheInscription from "./components/FicheInscription";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
@@ -37,6 +38,7 @@ const App = ({isDarkMode}) => {
           <Route path="/jjb" element={<HorairesJudoJjb />} />
           <Route path="/mma" element={<HorairesMma />} />
           <Route path="/horaires" element={<Horaires />}/>
+          <Route path="/ficheinscription" element={<FicheInscription />}/>
 
           {/* Judo/JJB */}
           <Route path="/horaires/judo/kids" element={<HorairesJudoKids/>}/>

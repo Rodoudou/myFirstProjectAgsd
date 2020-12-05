@@ -1,63 +1,101 @@
-@import '~antd/dist/antd.css';
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
-body{
+body {
   margin: 0px;
   padding: 0px;
   font-family: Arial;
   font-size: 18px;
-  line-height: 40px ;
+  line-height: 40px;
 }
-/* Modale antd */
+
+/* Dark Mode toggle */
+.darkMode{
+  background-color: black;
+  color: white;
+}
+
+.lightMode{
+  background-color: green;
+}
+
+/* .container{
+  background-color: red;
+} */
+/* ************************ Menu ***********************************/
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/************************** MyCard **********************************/
+.myCard a {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
+.myCard :nth-child(1) {
+  max-width: 900px;
+  display: grid;
+  grid-gap: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.myCard img {
+  height: 200px;
+}
+/************************** Modale antd ******************************/
 .ant-modal-footer {
   display: none;
 }
 
-.modal-horaires{
-margin: auto;
-width: 500px;
-height: 500px;}
-
-
-
-.ant-menu{
-background-color: #001529;
-color : white;
+.modal-horaires {
+  margin: auto;
+  width: 500px;
+  height: 500px;
 }
-.ant-menu ul{
-  color : red;
-  }
 
-.nav-content{
-  background-image: url('./assets/img/banner.jpg');
+
+.ant-menu {
+  background-color: #001529;
+  color: white;
+}
+.ant-menu ul {
+  color: red;
+}
+
+.nav-content {
+  background-image: url("./assets/img/banner.jpg");
 }
 /* ca supprime le toggle */
-.ant-menu>button{
+.ant-menu > button {
   /* display: none; */
   background-color: tomato;
   width: 50%;
   height: 100%;
 }
 
-.home-content{
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- 
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.container{
+.container {
   height: 100%;
 }
-.boxe-content{
+.boxe-content {
   height: 100vh;
 }
 
-.tarifs-content{
+.tarifs-content {
   height: 100vh;
 }
 
-.textarea_contact{
+.textarea_contact {
   font-family: "HK Compakt";
   font-style: normal;
   font-weight: 500;
@@ -72,30 +110,27 @@ color : white;
   resize: none;
 }
 
-.acces-map{
+.acces-map {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.transports :first-child{
+.transports :first-child {
   font-size: xx-large;
   margin: 10px 10px;
 }
 
-.transports p{
+.transports p {
   margin-left: 10px;
 }
 
-
-
-.video{
+.video {
   text-align: center;
 }
 
-
-.pageFacebook{
+.pageFacebook {
   display: flex;
   flex-direction: column;
   margin-top: 110px;
@@ -103,127 +138,157 @@ color : white;
   margin-right: 5%;
 }
 
-
-
-.certif{
+.certif {
   display: flex;
   flex-direction: row-reverse;
 }
-.inscription-content{
+.inscription-content {
   display: flex;
   flex-direction: row-reverse;
   height: 100vh;
 }
 
-.horaires{
+.horaires {
   display: flex;
   flex-direction: row-reverse;
 }
 
-
-.contact-content{
+.contact-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left:50px;
+  margin-left: 50px;
 }
 
-/* Social Media */
-.socialIcon>*:hover{
+/*************************************** Social Media ****************************/
+.socialIcon > *:hover {
   color: white;
   transition: 0.5s;
 }
 
 .socialIcon {
-  color: #FFFFFFA6;
+  color: #ffffffa6;
   cursor: pointer;
-
 }
 
 .socialIcon :nth-of-type(2) {
   margin: 0 5px;
 }
 
-.socialMediaInFaceBookPage{
+.socialMediaInFaceBookPage {
   display: none;
 }
 
+/***************************** In Layout component ****************************/
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    padding:  3rem 3rem;
+    justify-content: center;
+}
 
+#footer {
+  background-color: #001529;
+  color: #ffffffa6;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem 3rem;
+  justify-content: center;
+}
 
 /* tab */
+td a{
+  color: white;
+}
+td a:hover{
+  color: black;
+  transition: 1s;
+}
 table {
-  border:3px solid black;
-  border-collapse:collapse;
-  width:90%;
-  margin:135px auto;
-  }
-  
-  thead, tfoot {
-  background-color:#D0E3FA;
-  border:1px solid #6495ed;
-  }
-  tbody {
-  background-color:#FFFFFF;
-  border:1px solid black;
-  }
-  th {
-  font-family:monospace;
-  border:1px dotted black;
-  padding:5px;
-  background-color:#EFF6FF;
-  width:15%;
-  }
-  td {
-  font-family:sans-serif;
-  font-size:80%;
-  border:1px solid black;
-  padding:5px;
-  text-align:left;
-  }
-  caption {
-  font-family:sans-serif;
-  }
+  border: 3px solid black;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 135px auto;
+}
 
+thead,
+tfoot {
+  background-color: #d0e3fa;
+  border: 1px solid #6495ed;
+}
+tbody {
+  background-color: #ffffff;
+  border: 1px solid black;
+}
+th {
+  font-family: monospace;
+  border: 1px dotted black;
+  padding: 5px;
+  background-color: #eff6ff;
+  width: 15%;
+}
+td {
+  font-family: sans-serif;
+  font-size: 80%;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+caption {
+  font-family: sans-serif;
+}
 
-    /* Judo & JJB */
-  th[class='eveil'], td[class='eveil']{
-    background-color: tomato;
-  }
-  th[class='baby-presPoussin'], td[class='baby-presPoussin']{
-    background-color: steelblue;
-  }
-  th[class='poussin-benjamin'], td[class='poussin-benjamin']{
-    background-color: papayawhip;
-  }
-  th[class='ados-adultes'], td[class='ados-adultes']{
-    background-color: orange;
-  }
+/* Judo & JJB */
+th[class="eveil"],
+td[class="eveil"] {
+  background-color: tomato;
+}
+th[class="baby-presPoussin"],
+td[class="baby-presPoussin"] {
+  background-color: steelblue;
+}
+th[class="poussin-benjamin"],
+td[class="poussin-benjamin"] {
+  background-color: papayawhip;
+}
+th[class="ados-adultes"],
+td[class="ados-adultes"] {
+  background-color: orange;
+}
 
-  /* MMA */
-  th[class='mma-kids'], td[class='mma-kids']{
-    background-color: seagreen;
-  }
-  th[class='mma-ados-adultes'], td[class='mma-ados-adultes']{
-    background-color: rgb(0, 179, 255);
-  }
+/* MMA */
+th[class="mma-kids"],
+td[class="mma-kids"] {
+  background-color: seagreen;
+}
+th[class="mma-ados-adultes"],
+td[class="mma-ados-adultes"] {
+  background-color: rgb(0, 179, 255);
+}
 
-  /* Boxe */
-   th[class='boxe-kids'], td[class='boxe-kids']{
-    background-color: #fb1;
-  }
-  th[class='boxe-lady'], td[class='boxe-lady']{
-    background-color: pink;
-  }
-  th[class='boxe-mixte'], td[class='boxe-mixte']{
-    background-color: rgb(17, 255, 172);
-  }
+/* Boxe */
+th[class="boxe-kids"],
+td[class="boxe-kids"] {
+  background-color: #fb1;
+}
+th[class="boxe-lady"],
+td[class="boxe-lady"] {
+  background-color: pink;
+}
+th[class="boxe-mixte"],
+td[class="boxe-mixte"] {
+  background-color: rgb(17, 255, 172);
+}
 
-  /* centrer le texte dans les colonnes */
-td, th{
-    text-align: center;
-  }
-  .certif img{
-   margin: auto;
-  }
-
-
+/* centrer le texte dans les colonnes */
+td,
+th {
+  text-align: center;
+}
+.certif img {
+  margin: auto;
+}
+/********************FICHE INSCRIPTION *************************************/
+/* .ficheInscription{
+display: flex;
+} */
