@@ -289,6 +289,6 @@ th {
   margin: auto;
 }
 /********************FICHE INSCRIPTION *************************************/
-/* .ficheInscription{
-display: flex;
-} */
+.ficheInscription div{
+  display: flex;
+}
