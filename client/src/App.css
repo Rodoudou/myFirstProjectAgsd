@@ -289,6 +289,12 @@ th {
   margin: auto;
 }
 /********************FICHE INSCRIPTION *************************************/
+
 .ficheInscription div{
   display: flex;
+}
+
+.ficheInscription div input{
+width: 250px;
+height: 36px;
 }

@@ -4,7 +4,7 @@ import { Layout, Menu, Modal, Image } from "antd";
 import MyCard from "../MyCard";
 import Tarifs from "../../containers/tarifs";
 import banner from "../../assets/img/banner.jpg";
-import FacebookPage from "../../components/FacebookPage";
+// import FacebookPage from "../../components/FacebookPage";
 import SocialMedias from "../SocialMedias";
 import DarkModeToggle from "react-dark-mode-toggle";
 
@@ -92,7 +92,7 @@ const AMRLayout = ({ children }) => {
       <Footer id="footer">
         &#169;Create by Redouane Amrani with React 2020
         <SocialMedias />
-        <FacebookPage/>
+        {/* <FacebookPage/> */}
       </Footer>
     </Layout>
     //   </div>
