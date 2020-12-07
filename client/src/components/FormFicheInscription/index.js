@@ -1,27 +1,37 @@
-import React, { useState } from 'react'
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
 import axios from "axios";
-import CheckActivity from '../CheckActivity';
-import SelectOptions from '../SelectOptions';
+import { Form, Button } from "react-bootstrap";
+import { Checkbox, Row, Col } from "antd";
 
-const FormFicheInscription = ({sex}) => {
-      // les States
+
+const FormFicheInscription = ({isDarkMode, Dark}) => {
+  console.log("Dark",Dark);
+  // les States
   const [name, setName] = useState("");
   const [prenom, setPrenom] = useState("");
-  // const[sex, setSex]=useState();
+  const [sex, setSex] = useState("");
   const [date, setDate] = useState();
   const [email, setEmail] = useState("");
   const [adresse, setAdresse] = useState("");
-  const[ville,setVille]=useState("");
+  const [ville, setVille] = useState("");
   const [codePostal, setCodePostal] = useState();
-  const [tel,setTel]=useState();
+  const [tel, setTel] = useState();
+  const [activities, setActivities] = useState([]);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post("/mail", {
+    const response = await axios.post("/fiche-inscription", {
       name,
-      email
+      prenom,
+      email,
+      sex,
+      date,
+      adresse,
+      ville,
+      codePostal,
+      tel,
+      activities
     });
     console.log("response", response);
   };
@@ -35,15 +45,16 @@ const FormFicheInscription = ({sex}) => {
   const HandleChangePrenom = (e) => {
     const prenom = e.target.value;
     setPrenom(prenom);
-    // console.log(e.target.value) HandleChangeSex
+    // console.log(e.target.value)
   };
 
-  // const HandleChangeSex = (e) => {
-  //   const sex = e.target.value;
-  //   setSex(sex);
-  //   // console.log(e.target.value) HandleChangeSex
-  // };
-  const HandleChangeDAte = (e) => {
+  const HandleChangeSex = (e) => {
+    const sex = e.target.value;
+    setSex(sex);
+    console.log("sex:", e.target.value);
+  };
+
+  const HandleChangeDate = (e) => {
     const date = e.target.value;
     setDate(date);
     // console.log(e.target.value)
@@ -54,8 +65,6 @@ const FormFicheInscription = ({sex}) => {
     setTel(tel);
     // console.log(e.target.value)
   };
-
-
 
   const HandleChangeAdresse = (e) => {
     const adresse = e.target.value;
@@ -80,50 +89,60 @@ const FormFicheInscription = ({sex}) => {
     // console.log(e.target.value)
   };
 
-    return (
-        <Form
-        className="ficheInscription"
-        onSubmit={handleSubmit}
-        action="Post"
-        type="submit"
-      >
-        <div>
-          <Form.Group controlId="formBasicName" onChange={HandleChangeName}>
-            <Form.Control type="text" placeholder="Name" />
-          </Form.Group>
+  const handleChangeActivity = (checkedValues) => {
+    const activityChecked = checkedValues;
+    setActivities(activityChecked);
+    console.log("activityChecked = ", activityChecked);
+  };
 
-          <Form.Group
-            controlId="formBasicPrenom"
-            onChange={HandleChangePrenom}
-          >
-            <Form.Control type="text" placeholder="Prenom" value={prenom}  />
-          </Form.Group>
-        </div>
-        <div>
-          <Form.Group controlId="formBasicDate" 
-          onChange={HandleChangeDAte} 
-          value={date} >
-            <Form.Control type="date" placeholder="Date" />
-          </Form.Group>
+  return (
+    <div>
+    <p style={{fontSize:"35px"}}> Formulaire d'inscription</p>
 
-          <Form.Group
-            controlId="formBasicSex"
-            // onChange={HandleChangeSex}
-            value={sex}
-          >
-            <SelectOptions/>
-          </Form.Group>
-        </div>
+    <Form
+      className="ficheInscription"
+      onSubmit={handleSubmit}
+      action="Post"
+      type="submit"
+    >
+      <div>
+        <Form.Group controlId="formBasicName" onChange={HandleChangeName}>
+          <Form.Control type="text" placeholder="Name" defaultValue={name} />
+        </Form.Group>
 
-        <div>
+        <Form.Group controlId="formBasicPrenom" onChange={HandleChangePrenom}>
+          <Form.Control
+            type="text"
+            placeholder="Prenom"
+            defaultValue={prenom}
+          />
+        </Form.Group>
+      </div>
+      <div>
+        <Form.Group controlId="formBasicDate" onChange={HandleChangeDate}>
+          <Form.Control type="date" placeholder="Nés le" defaultValue={date} />
+        </Form.Group>
+
+        <Form.Group
+          style={{ width: 250 }}
+          controlId="formBasicSex"
+          onChange={HandleChangeSex}
+        >
+          <Form.Control as="select">
+            <option>Feminin</option>
+            <option>Masculin</option>
+          </Form.Control>
+        </Form.Group>
+      </div>
+
+      <div>
         <Form.Group
           controlId="formBasicEmail"
           onChange={HandleChangeEmail}
           required
           type="email"
-          value={email}
         >
-          <Form.Control type="text" placeholder="Email" />
+          <Form.Control type="text" placeholder="Email" defaultValue={email} />
         </Form.Group>
 
         <Form.Group
@@ -131,20 +150,22 @@ const FormFicheInscription = ({sex}) => {
           onChange={HandleChangeTel}
           required
           type="tel"
-          value={tel}
         >
-          <Form.Control type="text" placeholder="Tel" />
+          <Form.Control type="text" placeholder="Tel" defaultValue={tel} />
         </Form.Group>
-        </div>
-        <div>
+      </div>
+      <div>
         <Form.Group
           controlId="formBasicAdresse"
           onChange={HandleChangeAdresse}
           required
           type="tel"
-          value={adresse}
         >
-          <Form.Control type="text" placeholder="Adresse" />
+          <Form.Control
+            type="text"
+            placeholder="Adresse"
+            defaultValue={adresse}
+          />
         </Form.Group>
 
         <Form.Group
@@ -152,33 +173,57 @@ const FormFicheInscription = ({sex}) => {
           onChange={HandleChangeCodePostal}
           required
           type="text"
-          value={codePostal}
         >
-          <Form.Control type="text" placeholder="Code postal" />
+          <Form.Control
+            type="text"
+            placeholder="Code postal"
+            defaultValue={codePostal}
+          />
         </Form.Group>
-        </div>
+      </div>
 
-        <div>
+      <div>
         <Form.Group
           controlId="formBasicVille"
           onChange={HandleChangeVille}
           required
           type="tel"
-          value={ville}
         >
-          <Form.Control type="text" placeholder="Ville" />
+          <Form.Control type="text" placeholder="Ville" defaultValue={ville} />
         </Form.Group>
-        </div>
+      </div>
 
+      <p style={{fontSize:"20px"}}>Activités choisies</p>
+      <Checkbox.Group
+        style={{ width: "100%" }}
+        onChange={handleChangeActivity}
+        activities={activities}
 
-        <h2>Activités choisies</h2>
-        <CheckActivity/>
-
-        <Button variant="primary" type="submit">
-          Envoyer
-        </Button>
-      </Form>
-    )
-}
+      >
+        <Row>
+          <Col span={8}>
+            <Checkbox value="Judo"><span className={isDarkMode?"darkMode":null}>Judo</span></Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="JJB"><span className={isDarkMode?"darkMode":null}>JJB</span></Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="MMA" className={isDarkMode?"darkMode":null}><span>MMA</span></Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="Muay Thaï"><span className={isDarkMode?"darkMode":null}>Muay Thaï</span></Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="Lady Boxing"><span className={isDarkMode?"darkMode":null}>Lady Boxing</span></Checkbox>
+          </Col>
+        </Row>
+      </Checkbox.Group>
+      <Button variant="primary" type="submit">
+        Envoyer
+      </Button>
+    </Form>
+    </div>
+  );
+};
 
 export default FormFicheInscription;

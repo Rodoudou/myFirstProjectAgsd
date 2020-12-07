@@ -6,26 +6,12 @@ import Tarifs from "../../containers/tarifs";
 import banner from "../../assets/img/banner.jpg";
 // import FacebookPage from "../../components/FacebookPage";
 import SocialMedias from "../SocialMedias";
-import DarkModeToggle from "react-dark-mode-toggle";
+
 
 const { Header, Content, Footer } = Layout;
 
-const AMRLayout = ({ children }) => {
-  // STATES
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [planingShow, setPlaningShow] = useState(false);
-  const [tarifShow, setTarifShow] = useState(false);
+const AMRLayout = ({ children, isDarkMode,planingShow,setPlaningShow ,tarifShow,setTarifShow,Dark,fermerModaleTarifs}) => {
 
-  const fermerModaleTarifs = () => {
-    setTarifShow(true);
-  };
-
-  // The toggle Dark Mode component
-  const Dark = () => {
-    return (
-      <DarkModeToggle onChange={setIsDarkMode} checked={isDarkMode} size={60} />
-    );
-  };
 
   return (
     // <div className="container">
@@ -87,7 +73,7 @@ const AMRLayout = ({ children }) => {
           <Tarifs />
         </Modal>
       </Header>
-      <Image src={banner} fluid />
+      <Image src={banner} fluid="true" />
       <Content id="content" children={children} />
       <Footer id="footer">
         &#169;Create by Redouane Amrani with React 2020

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Route,Routes} from "react-router-dom";
 import Layout from "./components/Layout";
@@ -22,14 +22,41 @@ import HorairesMmaAdultes from "./components/Horaires/mma/HorairesMmaAdultes";
 import HorairesMmaKids from "./components/Horaires/mma/HorairesMmaKids";
 import FicheInscription from "./components/FicheInscription";
 
+import DarkModeToggle from "react-dark-mode-toggle";
+import FormFicheInscription from "./components/FormFicheInscription";
+
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
 // library.add(faCoffee, faKey);
 
 
-const App = ({isDarkMode}) => {
+const App = () => {
+    // STATES
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [planingShow, setPlaningShow] = useState(false);
+    const [tarifShow, setTarifShow] = useState(false);
+  
+    const fermerModaleTarifs = () => {
+      setTarifShow(true);
+    };
+  
+    // The toggle Dark Mode component
+    const Dark = () => {
+      return (
+        <DarkModeToggle onChange={setIsDarkMode} checked={isDarkMode} size={60} />
+      );
+    };
   return (
-    <Layout>
+    <Layout 
+    isDarkMode={isDarkMode}
+    planingShow={planingShow}
+    setPlaningShow={setPlaningShow}
+    tarifShow={tarifShow}
+    setTarifShow={setTarifShow}
+    Dark={Dark}
+    fermerModaleTarifs={fermerModaleTarifs}
+
+    >
       <Routes>
           <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
           <Route path="contact" element={<Contact />} />
@@ -38,7 +65,7 @@ const App = ({isDarkMode}) => {
           <Route path="/jjb" element={<HorairesJudoJjb />} />
           <Route path="/mma" element={<HorairesMma />} />
           <Route path="/horaires" element={<Horaires />}/>
-          <Route path="/ficheinscription" element={<FicheInscription />}/>
+          <Route path="/ficheinscription" element={<FormFicheInscription isDarkMode={isDarkMode} Dark={Dark}/>}/>
 
           {/* Judo/JJB */}
           <Route path="/horaires/judo/kids" element={<HorairesJudoKids/>}/>

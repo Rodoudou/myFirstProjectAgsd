@@ -31,15 +31,13 @@ function Inscription() {
                       joindre :
                     </p>
                     <p>
-                      1- Pour commencer nous vous demanderons de remplir ou de
-                      télécharger le
-                      <a
+                      1- Pour commencer nous vous demanderons de remplir le
+                      <Link to="/ficheinscription"
                         style={{ fontSize: 16 }}
-                        href="http://www.agsd.fr/images/content/inscription/preinscription.pdf"
+                        
                       >
-                        {" "}
-                        formulaire d’inscription
-                      </a>{" "}
+                        {" "}formulaire d’inscription
+                      </Link>{" "}
                       et la{" "}
                       <a href="http://www.agsd.fr/images/content/inscription/assurance.pdf">
                         feuille d'assurance{" "}
