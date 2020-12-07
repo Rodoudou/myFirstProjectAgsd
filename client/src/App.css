@@ -298,3 +298,11 @@ th {
 width: 250px;
 height: 36px;
 }
+/* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
+input[type="date"]::before{
+  content: attr(placeholder)" : ";
+  white-space: pre;
+}
+input[type="date"]:focus::before {
+  content:""!important;
+}
