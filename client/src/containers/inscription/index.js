@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import titles from './../../titres.json';
 import { Link } from "react-router-dom";
 import "../../App.css";
 // import FacebookPage from "../../components/FacebookPage";
@@ -24,7 +25,7 @@ function Inscription() {
                 <div className="inscription-content">
                   {/* <FacebookPage /> */}
                   <div>
-                  <p style={{fontSize:"35px"}}>Comment s’abonner ?</p>
+                  <p style={{fontSize:"35px"}}>{titles.titleInscription}</p>
                     <p>
                       Pour vous inscrire rien de plus simple, il vous suffit de
                       télécharger et de remplir la feuille d’inscription et y

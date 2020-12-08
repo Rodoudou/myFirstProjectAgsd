@@ -1,13 +1,9 @@
 import React from "react";
-
+import titles from '../../titres.json'
 const Article = ({isDarkMode}) => {
   return (
     <section>
-      <p style={{fontSize:"35px"}}>
-        AGSD COMBAT Saint-Denis 93200 : Mixed Martial Arts (MMA), Judo, Jiu
-        Jitsu Brésilien (JJB), Grappling, Boxe Muay Thaï et Lady Boxing à
-        Saint-Denis
-      </p>
+      <p style={{fontSize:"35px"}}>{titles.TitleHome}</p>
       <br />
 
       <div className="article-home">

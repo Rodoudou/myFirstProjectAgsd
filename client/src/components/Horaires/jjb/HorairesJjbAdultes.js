@@ -4,7 +4,7 @@ import titles from '../../../../src/titres.json';
 const HorairesJjbAdultes = () => {
   return (
     <div>
-       <p style={{fontSize:30}}>{titles.titleJjb}</p>
+       <p style={{fontSize:30}}>{titles.jjb.titleJjb}</p>
        
     <table>
     <thead>

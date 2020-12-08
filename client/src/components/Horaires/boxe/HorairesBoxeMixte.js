@@ -4,7 +4,7 @@ import titles from '../../../../src/titres.json';
 const HorairesBoxeMixte = () => {
   return (
     <div>
-       <p style={{fontSize:30}}>{titles.titleMuayThai}</p>
+       <p style={{fontSize:30}}>{titles.boxe.titleMuayThai}</p>
 
     <table>
       <thead>

@@ -4,7 +4,7 @@ import titles from '../../../../src/titres.json';
 const HorairesMmaKids = () => {
     return (
       <div>
-      <p style={{ fontSize: 30 }}>{titles.titleMma}</p>
+      <p style={{ fontSize: 30 }}>{titles.mma.titleMma}</p>
       
         <table className="mma">
         <thead>
