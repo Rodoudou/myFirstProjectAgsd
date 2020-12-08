@@ -1,12 +1,13 @@
 import React from "react";
 import titles from '../../../../src/titres.json';
+import { Table } from "react-bootstrap";
 
 const HorairesJjbKids = () => {
     return (
       <div>
          <p style={{fontSize:30}}>{titles.jjb.titleJjbKids}</p>
 
-    <table>
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>JJB</th>
@@ -51,7 +52,7 @@ const HorairesJjbKids = () => {
           <td></td>
         </tr>
       </tbody>
-    </table>
+    </Table>
          </div>
   );
 };

@@ -9,6 +9,7 @@ body {
   line-height: 40px;
 }
 
+
 /* Dark Mode toggle */
 .darkMode{
   background-color: black;
@@ -27,8 +28,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
 }
-
+.ant-layout-header {
+ padding: 0;
+}
 /************************** MyCard **********************************/
 .myCard a {
   -webkit-box-shadow: 0 8px 6px -6px black;
@@ -293,16 +300,35 @@ th {
 .ficheInscription div{
   display: flex;
 }
-
+#formGroup-option{
+  width: 250px;
+}
 .ficheInscription div input{
 width: 250px;
 height: 36px;
 }
 /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
 input[type="date"]::before{
-  content: attr(placeholder)" : ";
+  content: attr(placeholder)"Nés le: ";
   white-space: pre;
 }
 input[type="date"]:focus::before {
   content:""!important;
+}
+
+@media screen and (max-width:800px){
+
+  .ficheInscription div input{
+    width: 210px;
+    height: 36px;
+    }
+    /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
+    input[type="date"]::before{
+      content: none;
+    }
+
+    #formGroup-option{
+      width: 210px;
+    }
+
 }

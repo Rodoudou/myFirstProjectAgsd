@@ -120,11 +120,12 @@ const FormFicheInscription = ({isDarkMode, Dark}) => {
       </div>
       <div>
         <Form.Group controlId="formBasicDate" onChange={HandleChangeDate}>
-          <Form.Control type="date" placeholder="Nés le" defaultValue={date} />
+          <Form.Control type="date" defaultValue={date} />
         </Form.Group>
 
         <Form.Group
-          style={{ width: 250 }}
+        id="formGroup-option"
+          // style={{ width: 250 }}
           controlId="formBasicSex"
           onChange={HandleChangeSex}
         >

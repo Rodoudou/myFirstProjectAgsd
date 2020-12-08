@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 
 function Tarifs() {
   return (
@@ -7,7 +8,7 @@ function Tarifs() {
       <div className="row">
         <div className="tarifs-content">
 
-          <table className="tarifs">
+          <Table className="tarifs">
             <thead>
               <tr>
                 <th>Tarifs</th>
@@ -49,7 +50,7 @@ function Tarifs() {
                 <td className="boxe-lady"><Link to="/horaires/boxe/lady">255€</Link></td>
               </tr>
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
     </div>

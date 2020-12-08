@@ -3,19 +3,19 @@
     "titleInscription":"Comment s’abonner ?",
     "titleContact":"Nous contacter",
     "judo":{
-        "titleJudo": "Judo",
+    "titleJudo": "Judo",
     "titleJudoKids": "Judo Enfants"
     },
     "jjb":{
-          "titleJjb":"Jujitsu Brésilien",
+    "titleJjb":"Jujitsu Brésilien",
     "titleJjbKids":"Jujitsu Brésilien Enfants"
     },
   "mma":{
-      "titleMma":"MMA",
+    "titleMma":"MMA",
     "titleMmaKids":"MMA Enfants"
   },
   "boxe":{
-       "titleMuayThai":"Muay Thaï",
+    "titleMuayThai":"Muay Thaï",
     "titleMuayThaiKids":"Muay Thaï Enfants",
     "titleLadyBox":"Lady Boxing"
   }

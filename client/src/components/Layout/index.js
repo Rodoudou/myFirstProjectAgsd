@@ -18,7 +18,7 @@ const AMRLayout = ({ children, isDarkMode,planingShow,setPlaningShow ,tarifShow,
     //   <div className="row">
 
     <Layout className={isDarkMode?"darkMode":null}>
-      <Header >
+      <Header  >
         <Menu
         id="menu"
           theme={"dark"}

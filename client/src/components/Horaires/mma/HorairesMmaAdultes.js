@@ -1,12 +1,13 @@
 import React from "react";
 import titles from '../../../../src/titres.json';
+import { Table } from "react-bootstrap";
 
 const HorairesMmaAdultes = () => {
   return (
     <div>
       <p style={{ fontSize: 30 }}>{titles.mma.titleMma}</p>
 
-      <table className="mma">
+      <Table striped bordered hover className="mma">
         <thead>
           <tr>
             <th>MMA</th>
@@ -31,7 +32,7 @@ const HorairesMmaAdultes = () => {
             <td className="mma-ados-adultes">20h00/22h00</td>
           </tr>
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
