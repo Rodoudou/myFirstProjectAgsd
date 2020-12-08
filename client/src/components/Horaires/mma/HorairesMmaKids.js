@@ -1,7 +1,11 @@
 import React from 'react'
+import titles from '../../../../src/titres.json';
 
 const HorairesMmaKids = () => {
     return (
+      <div>
+      <p style={{ fontSize: 30 }}>{titles.titleMma}</p>
+      
         <table className="mma">
         <thead>
           <tr>
@@ -23,6 +27,7 @@ const HorairesMmaKids = () => {
           </tr>
         </tbody>
       </table>
+      </div>
     )
 }
 

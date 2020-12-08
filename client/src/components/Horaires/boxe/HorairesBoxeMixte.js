@@ -1,7 +1,11 @@
 import React from "react";
+import titles from '../../../../src/titres.json';
 
 const HorairesBoxeMixte = () => {
   return (
+    <div>
+       <p style={{fontSize:30}}>{titles.titleMuayThai}</p>
+
     <table>
       <thead>
         <tr>
@@ -20,6 +24,7 @@ const HorairesBoxeMixte = () => {
         </tr>
       </tbody>
     </table>
+    </div>
   );
 };
 

@@ -21,7 +21,7 @@ const disciplines = [
   { src: jjbKids, name: "JJB Enfants", route: "/horaires/jjb/kids" },
   { src: muayThai, name: "Muay Thaï Mixte", route: "/horaires/boxe/mixt" },
   { src: muayThaiKids, name: "Muay Thaï Enfants", route: "/horaires/boxe/kids" },
-  { src: LadyBoxing, name: "Lady Boxing", route: "horaires/boxe/lady" },
+  { src: LadyBoxing, name: "Lady Boxing", route: "/horaires/boxe/lady" },
   { src: mma, name: "MMA Adultes", route: "/horaires/mma/adultes" },
   { src: mmaKids, name: "MMA kids", route: "/horaires/mma/kids" },
 ];

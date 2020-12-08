@@ -20,10 +20,11 @@ import HorairesJudoKids from "./components/Horaires/judo/HorairesJudoKids";
 import HorairesJudoAdultes from "./components/Horaires/judo/HorairesJudoAdultes";
 import HorairesMmaAdultes from "./components/Horaires/mma/HorairesMmaAdultes";
 import HorairesMmaKids from "./components/Horaires/mma/HorairesMmaKids";
-import FicheInscription from "./components/FicheInscription";
 
 import DarkModeToggle from "react-dark-mode-toggle";
 import FormFicheInscription from "./components/FormFicheInscription";
+import HorairesJjbKids from "./components/Horaires/jjb/HorairesJjbKids";
+import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
@@ -70,11 +71,11 @@ const App = () => {
           {/* Judo/JJB */}
           <Route path="/horaires/judo/kids" element={<HorairesJudoKids/>}/>
           <Route path="/horaires/judo/adultes" element={<HorairesJudoAdultes/>}/>
-          <Route path="/horaires/jjb/kids" element={<HorairesJudoKids/>}/>
-          <Route path="/horaires/jjb/adultes" element={<HorairesJudoJjb/>}/>
+          <Route path="/horaires/jjb/kids" element={<HorairesJjbKids/>}/>
+          <Route path="/horaires/jjb/adultes" element={<HorairesJjbAdultes/>}/>
           {/* Boxe */}
           <Route path="/horaires/boxe/mixt" element={<HorairesBoxeMixte/>}/>
-          <Route path="/horaires/boxe/Lady" element={<HorairesLadyBoxe/>}/>
+          <Route path="/horaires/boxe/lady" element={<HorairesLadyBoxe/>}/>
           <Route path="/horaires/boxe/kids" element={<HorairesBoxeKids/>}/>
           {/* MMA */}
           <Route path="/horaires/mma/adultes" element={<HorairesMmaAdultes/>}/>

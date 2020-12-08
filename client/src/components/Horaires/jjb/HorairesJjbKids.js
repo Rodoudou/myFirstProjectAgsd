@@ -1,7 +1,11 @@
 import React from "react";
+import titles from '../../../../src/titres.json';
 
 const HorairesJjbKids = () => {
-  return (
+    return (
+      <div>
+         <p style={{fontSize:30}}>{titles.titleJjbKids}</p>
+
     <table>
       <thead>
         <tr>
@@ -48,6 +52,7 @@ const HorairesJjbKids = () => {
         </tr>
       </tbody>
     </table>
+         </div>
   );
 };
 

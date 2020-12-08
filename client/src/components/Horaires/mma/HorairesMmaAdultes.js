@@ -1,8 +1,12 @@
-import React from 'react'
+import React from "react";
+import titles from '../../../../src/titres.json';
 
 const HorairesMmaAdultes = () => {
-    return (
-<table className="mma">
+  return (
+    <div>
+      <p style={{ fontSize: 30 }}>{titles.titleMma}</p>
+
+      <table className="mma">
         <thead>
           <tr>
             <th>MMA</th>
@@ -28,7 +32,8 @@ const HorairesMmaAdultes = () => {
           </tr>
         </tbody>
       </table>
-    )
-}
+    </div>
+  );
+};
 
 export default HorairesMmaAdultes;
