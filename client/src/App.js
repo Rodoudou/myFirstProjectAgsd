@@ -25,6 +25,7 @@ import DarkModeToggle from "react-dark-mode-toggle";
 import FormFicheInscription from "./components/FormFicheInscription";
 import HorairesJjbKids from "./components/Horaires/jjb/HorairesJjbKids";
 import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
+// import Signup from "./components/Signup";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
@@ -60,6 +61,7 @@ const App = () => {
     >
       <Routes>
           <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
+          {/* <Route path="/signup" element={<Signup/>} /> */}
           <Route path="contact" element={<Contact />} />
           <Route path="inscription" element={<Inscription />} />
           <Route path="/judo" element={<HorairesJudoJjb />} />

@@ -11,7 +11,7 @@ function Inscription() {
         <div
           className="inscription-content">
           {/* <FacebookPage /> */}
-          <div>
+          <div className="text-inscription">
             <p style={{ fontSize: "35px" }}>{titles.titleInscription}</p>
             <p>
               Pour vous inscrire rien de plus simple, il vous suffit de
