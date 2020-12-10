@@ -3,8 +3,10 @@ import routes from "./routes/routes.js";
 import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
-
 const PORT = process.env.PORT || 5000;
+
+const formidableMiddleWare = require("express-formidable");
+app.use(formidableMiddleWare());
 
 const app = express();
 // const cors = require('cors');
