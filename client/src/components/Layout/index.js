@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Layout, Menu, Modal, Image } from "antd";
+import { Layout, Menu, Modal, Image,Button } from "antd";
 import MyCard from "../MyCard";
 import Tarifs from "../../containers/tarifs";
 import banner from "../../assets/img/banner.jpg";
 // import FacebookPage from "../../components/FacebookPage";
 import SocialMedias from "../SocialMedias";
+
 
 
 const { Header, Content, Footer } = Layout;
@@ -47,7 +48,9 @@ const AMRLayout = ({ children, isDarkMode,planingShow,setPlaningShow ,tarifShow,
             <SocialMedias />
           </Menu.Item>
           <Dark />
+         
         </Menu>
+        
 
         {/* Modal pour afficher les horraires */}
         <Modal

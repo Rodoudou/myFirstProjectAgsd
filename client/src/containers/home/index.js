@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Article from "../../components/article";
+import VideoPresentation from "../../components/VideoPresentation";
 // import Map from "../../components/map";
 
 
 function Home({isDarkMode}) {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
   return (
     <div className="container">
     <div className="row">
     <div className="app">
-      {isLoading ? (
-        <p>En chargement...</p>
-      ) : (
         <section className="home-content" >
           <Article isDarkMode={isDarkMode}/>
+        <VideoPresentation/>
           {/* <Map /> */}
         </section>
-      )}
     </div>
     </div>
 </div>

@@ -9,7 +9,6 @@ body {
   line-height: 40px;
 }
 
-
 /* Dark Mode toggle */
 .darkMode{
   background-color: black;
@@ -85,12 +84,7 @@ body {
   height: 100%;
 }
 
-.home-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 .container {
   height: 100%;
 }
@@ -116,6 +110,27 @@ body {
   height: 8em;
   resize: none;
 }
+/* HOME/ARTICLE */
+section .article-home{
+  width: 500px;
+  margin:auto ;
+  text-justify: auto;
+}
+/* H1 de la HOME */
+.article-content >p{
+font-size: 30px;
+letter-spacing: 1px;
+line-height: 40px;
+
+}
+
+
+section .home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .acces-map {
   display: flex;
@@ -318,6 +333,18 @@ input[type="date"]:focus::before {
 
 @media screen and (max-width:800px){
 
+  body {
+    font-size: 16px;
+    line-height: 25px;
+  }
+/* H1 de la HOME */
+.article-content >p{
+  font-size: 25px;
+  letter-spacing: 1px;
+  line-height: 35px;
+  width: 450px;
+  
+  }
   .ficheInscription div input{
     width: 210px;
     height: 36px;

@@ -1,8 +1,7 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-
 //importation des models
-const User = require('../models/userModel');
+import {User} from '../models/userModel.mjs';
 
 
 //parametres pour crypter le password
@@ -12,14 +11,15 @@ const encBase64 = require('crypto-js/enc-base64');
 
 
 // Enregister un nouvel User dans la BDD et creation d'un password
-export const signUp =  async (req, res) => {
-
+export const addUser =  async (req, res) => {
+    const body = req.body;
+    console.log('body 1ere route user/sign_up => ',body);
     //Data pour construction du password
     const token = uid2(64);
     const salt = uid2(64);
-    const hash = SHA256(req.fields.password + salt).toString(encBase64);
-    const body = req.fields;
-    console.log('body 1ere route user/sign_up => ', body);
+    const hash = SHA256(body.password + salt).toString(encBase64);
+    console.log("hash",hash);
+
 
     try {
 
@@ -58,7 +58,7 @@ export const signUp =  async (req, res) => {
             });
 
             console.log('data newUser avant le save() =>', newUser)
-            // console.log('######',newUser._id,)
+             console.log('######',newUser._id,)
             await newUser.save();
             return res.json({
                 _id: newUser._id,

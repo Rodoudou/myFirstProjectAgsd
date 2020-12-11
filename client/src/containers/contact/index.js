@@ -47,9 +47,9 @@ const Contact = () => {
     // console.log(e.target.value)
   };
 
-  // console.log('name =>', name);
-  // console.log('email =>', email);
-  // console.log('message =>', message);
+  console.log('name =>', name);
+  console.log('email =>', email);
+  console.log('message =>', message);
 
   return (
     <div className="container">

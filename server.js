@@ -1,12 +1,14 @@
 import express from "express";
+// import formidableMiddleWare from "express-formidable";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
-const formidableMiddleWare = require("express-formidable");
-app.use(formidableMiddleWare());
 
 const app = express();
 // const cors = require('cors');
@@ -14,6 +16,7 @@ app.use(express.static('public'));
 app.use(cors());
 
 app.use(express.json());
+//app.use(formidableMiddleWare());
 
 app.use(routes);
 

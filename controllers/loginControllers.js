@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 //importation des models
-const User = require('../models/userModel');
+import {User} from '../models/userModel.mjs';
 
 
 //parametres pour crypter le password
@@ -15,8 +15,8 @@ const encBase64 = require('crypto-js/enc-base64');
 //route  login
 export const login =  async (req, res) => {
     // Pour afficher les données reçues :
-    const body = req.fields;
-//    console.log(body);
+    const body = req.body;
+    console.log("body login =>",body);
     // on cherche le user qui veut se connecter
     const user = await User.findOne({
         email: body.email

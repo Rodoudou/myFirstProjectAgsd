@@ -9,6 +9,7 @@ const myAddMail = 'agsdcombat@gmail.com';
 
 // Route Post recuperer data du form contact côté front puis envoyer via MailGun
 export const getPost = async(req, res)=>{
+  // console.log("req.fields", req.fields);
     
     const data = {
         from: ` AGSD COMBAT User : <${req.body.email}>`,
