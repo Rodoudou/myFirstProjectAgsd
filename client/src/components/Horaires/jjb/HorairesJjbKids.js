@@ -7,7 +7,7 @@ const HorairesJjbKids = () => {
       <div>
          <p style={{fontSize:30}}>{titles.jjb.titleJjbKids}</p>
 
-    <Table striped bordered hover>
+    <Table striped bordered hover className="shadowTab">
       <thead>
         <tr>
           <th>JJB</th>

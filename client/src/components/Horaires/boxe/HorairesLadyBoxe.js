@@ -6,7 +6,7 @@ const HorairesLadyBoxe = () => {
   return (
     <div>
     <p style={{fontSize:30}}>{titles.boxe.titleLadyBox}</p>
-    <Table striped bordered hover>
+    <Table striped bordered hover className="shadowTab">
         <thead>
           <tr>
  <th>Lady Boxing</th>

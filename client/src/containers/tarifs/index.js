@@ -8,7 +8,7 @@ function Tarifs() {
       <div className="row">
         <div className="tarifs-content">
 
-          <Table className="tarifs">
+          <Table className="tarifs shadowTab">
             <thead>
               <tr>
                 <th>Tarifs</th>

@@ -27,6 +27,7 @@ import HorairesJjbKids from "./components/Horaires/jjb/HorairesJjbKids";
 import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
+import Tarifs from "./containers/tarifs";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="sign_up" element={<Signup />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="tarifs" element={<Tarifs />} />
         <Route path="inscription" element={<Inscription />} />
         <Route path="judo" element={<HorairesJudoJjb />} />
         <Route path="jjb" element={<HorairesJudoJjb />} />

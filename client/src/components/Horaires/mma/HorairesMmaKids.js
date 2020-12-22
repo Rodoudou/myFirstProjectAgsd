@@ -7,7 +7,7 @@ const HorairesMmaKids = () => {
       <div>
       <p style={{ fontSize: 30 }}>{titles.mma.titleMma}</p>
       
-        <Table striped bordered hover  className="mma">
+        <Table striped bordered hover  className="mma shadowTab">
         <thead>
           <tr>
             <th>MMA</th>

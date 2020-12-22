@@ -10,31 +10,93 @@ body {
 }
 
 /* Dark Mode toggle */
-.darkMode{
+.darkMode {
   background-color: black;
   color: white;
 }
 
-.lightMode{
+.lightMode {
   background-color: green;
 }
 
-/* .container{
-  background-color: red;
-} */
 /* ************************ Menu ***********************************/
-#menu {
+nav {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ccc;
+  grid-area: nav;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.burger {
+  display: none;
+}
+
+#navG {
+  display: flex;
   align-items: center;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  width: 100%;
 }
-.ant-layout-header {
- padding: 0;
+
+#navG img {
+  height: 20px;
+  padding-right: 9px;
 }
+
+#navG ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#navG a {
+  list-style: none;
+  transition: 0.5s;
+}
+
+#navG a:hover {
+  background-color: #d8d8d8;
+  color: #3dc1a7;
+  transition: 0.5s;
+}
+
+#navG a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  padding: 17px 9px;
+}
+
+#navD {
+  display: flex;
+  align-items: center;
+}
+
+#navD ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#navD a {
+  list-style: none;
+  padding: 0 9px;
+  border-right: 1px solid #333;
+}
+
+#navD a:hover {
+  color: #3dc1a7;
+  transition: 0.5s;
+}
+
+#navD a:last-child {
+  border-right: none;
+}
+#navD a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
 /************************** MyCard **********************************/
 .myCard a {
   -webkit-box-shadow: 0 8px 6px -6px black;
@@ -64,7 +126,6 @@ body {
   height: 500px;
 }
 
-
 .ant-menu {
   background-color: #001529;
   color: white;
@@ -83,7 +144,6 @@ body {
   width: 50%;
   height: 100%;
 }
-
 
 .container {
   height: 100%;
@@ -111,26 +171,24 @@ body {
   resize: none;
 }
 /* HOME/ARTICLE */
-section .article-home{
+section .article-home {
   width: 500px;
-  margin:auto ;
+  margin: auto;
   text-justify: auto;
 }
 /* H1 de la HOME */
-.article-content >p{
-font-size: 30px;
-letter-spacing: 1px;
-line-height: 40px;
-
+.article-content > p {
+  font-size: 30px;
+  letter-spacing: 1px;
+  line-height: 40px;
+  text-justify: auto;
 }
-
 
 section .home-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 
 .acces-map {
   display: flex;
@@ -202,15 +260,15 @@ section .home-content {
 }
 
 /***************************** In Layout component ****************************/
-#content{
-    display: flex;
-    flex-wrap: wrap;
-    padding:  3rem 3rem;
-    justify-content: center;
+#content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem 3rem;
+  justify-content: center;
 }
 
 #footer {
-  background-color: #001529;
+  background-color: #314455;
   color: #ffffffa6;
   display: flex;
   flex-wrap: wrap;
@@ -219,10 +277,10 @@ section .home-content {
 }
 
 /* tab */
-td a{
+td a {
   color: white;
 }
-td a:hover{
+td a:hover {
   color: black;
   transition: 1s;
 }
@@ -312,50 +370,163 @@ th {
 }
 /********************FICHE INSCRIPTION *************************************/
 
-.ficheInscription div{
+.ficheInscription div {
   display: flex;
 }
-#formGroup-option{
+#formGroup-option {
   width: 250px;
 }
-.ficheInscription div input{
-width: 250px;
-height: 36px;
+.ficheInscription div input {
+  width: 250px;
+  height: 36px;
 }
 /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
-input[type="date"]::before{
-  content: attr(placeholder)"Nés le: ";
+input[type="date"]::before {
+  content: attr(placeholder) "Nés le: ";
   white-space: pre;
 }
 input[type="date"]:focus::before {
-  content:""!important;
+  content: "" !important;
+}
+#helpContact {
+  background-color: #fff;
+  padding-bottom: 100px;
 }
 
-@media screen and (max-width:800px){
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#helpContact .helpContactDetail {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+#helpContact .icon {
+  text-align: center;
+}
+#helpContact h2 {
+  text-align: center;
+}
+#helpContact a {
+  color: red;
+  text-decoration: none;
+  font-size: 16px;
+}
 
+#helpContact a:hover {
+  text-decoration: underline;
+}
+
+.downloadfile {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.downloadfile label {
+  margin-right: 10px;
+  width: 350px;
+}
+/* **************** FOOTER ************************ */
+
+footer {
+  background-color: #314456;
+  grid-area: footer;
+  border-top: 3px solid #3dc1a7;
+}
+
+/* ************************************************* */
+
+@media screen and (max-width: 800px) {
   body {
     font-size: 16px;
     line-height: 25px;
   }
-/* H1 de la HOME */
-.article-content >p{
-  font-size: 25px;
-  letter-spacing: 1px;
-  line-height: 35px;
-  width: 450px;
-  
+  /* H1 de la HOME */
+  .article-content > p {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 35px;
+    width: 450px;
   }
-  .ficheInscription div input{
+  .ficheInscription div input {
     width: 210px;
     height: 36px;
-    }
-    /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
-    input[type="date"]::before{
-      content: none;
-    }
+  }
+  /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
+  input[type="date"]::before {
+    content: none;
+  }
 
-    #formGroup-option{
-      width: 210px;
-    }
+  #formGroup-option {
+    width: 210px;
+  }
+}
+.active {
+  display: block;
+}
 
+.shadowTab {
+  box-shadow: 7px 7px 5px #999;
+}
+
+@media screen and (max-width: 850px) {
+  body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  nav {
+    height: 40px;
+    justify-content: center;
+  }
+  #navG {
+    background-color: #475a6d;
+    flex-direction: column;
+  }
+  #navD a {
+    font-size: 12px;
+  }
+
+  #navG ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .burger {
+    display: block;
+    color: #333;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    cursor: pointer;
+  }
+
+  aside {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+  }
+  /* HOME/ARTICLE */
+  section .article-home {
+    width: 280px;
+    margin: auto;
+    text-justify: auto;
+  }
+  .video {
+    display: none;
+  }
+
+  section > p {
+    display: none;
+  }
 }

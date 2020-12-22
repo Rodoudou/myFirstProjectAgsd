@@ -6,7 +6,7 @@ const HorairesJudoAdultes = () => {
   return (
     <div>
       <p style={{ fontSize: 30 }}>{titles.judo.titleJudo}</p>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="shadowTab">
         <thead>
           <tr>
             <th>Judo</th>
