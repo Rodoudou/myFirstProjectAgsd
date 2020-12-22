@@ -8,9 +8,9 @@ import axios from "axios";
 const Login = () => {
   // les States
   // const [token, setToken] = useState(Cookies.get("token") || null);
-  // const [username, setUsername] = useState(Cookies.get("username") || "");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(Cookies.get("username") || "");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   
   // const history = useHistory();
   // const onLogin = (token, username) => {
