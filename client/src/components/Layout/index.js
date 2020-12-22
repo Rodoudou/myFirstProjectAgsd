@@ -1,9 +1,6 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
-import { Layout, Modal, Image } from "antd";
-import MyCard from "../MyCard";
-import Tarifs from "../../containers/tarifs";
-import banner from "../../assets/img/banner.jpg";
+import React from "react";
+import { Layout, Image } from "antd";
+import banner from "../../assets/img/banner-agsd.jpg";
 // import FacebookPage from "../../components/FacebookPage";
 import SocialMedias from "../SocialMedias";
 import Menu from '../../components/Menu';

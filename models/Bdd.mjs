@@ -1,10 +1,9 @@
-// import mongoose from 'mongoose';
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
 // require('dotenv').config();
+// // import { createRequire } from 'module';
+// // const require = createRequire(import.meta.url);
+// const mongoose = require("mongoose");
 
-
-// export const Bdd = mongoose.connect(
+// export const bdd = mongoose.connect(
 //     process.env.MONGODB_URI, {
 //         useNewUrlParser: true,
 //         useUnifiedTopology: true,
@@ -14,4 +13,4 @@
 // .then(() => {
 //     console.log('Connection etabli avec MongoDB');
 // })
-// .catch(error => console.error(error.message));;
+// .catch(error => console.error(error.message));

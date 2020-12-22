@@ -1,6 +1,6 @@
 import React,{useState} from "react";
-// import Cookies from "js-cookie";
-//import { Link, useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -9,8 +9,8 @@ const Login = () => {
   // les States
   // const [token, setToken] = useState(Cookies.get("token") || null);
   // const [username, setUsername] = useState(Cookies.get("username") || "");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   
   // const history = useHistory();
   // const onLogin = (token, username) => {
@@ -49,6 +49,7 @@ const Login = () => {
     // console.log(e.target.value)
   };
   return (
+    <div className="login-content">
     <Form onSubmit={handleSubmit} action="Post" type="submit">
       <Form.Group onChange={HandleChangeEmail} controlId="formBasicEmail">
         <Form.Control type="email" placeholder="Email" />
@@ -62,6 +63,8 @@ const Login = () => {
         Enregistrer
       </Button>
     </Form>
+
+    </div>
   );
 };
 

@@ -27,6 +27,17 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+.ant-image img{
+  height: 200px;
+}
+
+.login-content{
+  height: 40vh;
+}
+
+.signUp-content{
+  height: 40vh;
+}
 
 .burger {
   display: none;
@@ -452,7 +463,6 @@ input[type="date"]:focus::before {
 
 footer {
   background-color: #314456;
-  :footer ;
   border-top: 3px solid #3dc1a7;
   display: flex;
 }

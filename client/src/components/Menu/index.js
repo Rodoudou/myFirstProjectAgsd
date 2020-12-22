@@ -23,8 +23,8 @@ const Menu = () => {
 
         <div id="navD">
           <ul>
-            <Link to="#">M'inscrire</Link>
-            <Link to="#">Me connecter</Link>
+            <Link to="sign_up">M'inscrire</Link>
+            <Link to="/login">Me connecter</Link>
           </ul>
         </div>
       </nav>

@@ -42,6 +42,8 @@ const SignUp = () => {
     // console.log(e.target.value)
   };
   return (
+    <div className="signUp-content">
+      
     <Form onSubmit={handleSubmit} action="Post" type="submit">
       <Form.Group onChange={HandleChangeEmail} controlId="formBasicEmail">
         <Form.Control type="email" placeholder="Email" />
@@ -62,6 +64,7 @@ const SignUp = () => {
         Enregistrer
       </Button>
     </Form>
+    </div>
   );
 };
 
