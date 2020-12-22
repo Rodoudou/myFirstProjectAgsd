@@ -22,13 +22,6 @@ const AMRLayout = ({
   fermerModaleTarifs,
 }) => {
 
-const [isActive, setIsActive]=useState(false);
-
-  const showMenu=()=>{
-   setIsActive(true);
-  };
-
-
   return (
     <Layout className={isDarkMode ? "darkMode" : null}>
     

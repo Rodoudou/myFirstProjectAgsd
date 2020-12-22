@@ -16,6 +16,7 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
   const [codePostal, setCodePostal] = useState();
   const [tel, setTel] = useState();
   const [activities, setActivities] = useState([]);
+  const [droitImage, setDroitImage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
       codePostal,
       tel,
       activities,
+      droitImage
     });
     console.log("response", response);
   };
@@ -93,8 +95,18 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
     console.log("activityChecked = ", activityChecked);
   };
 
+  const handleChangeDroitImage = (checkedValues) => {
+    const droitImageChecked = checkedValues;
+    if(checkedValues){
+      setDroitImage(!droitImage);
+    }
+    console.log("droitImageChecked = ", droitImageChecked);
+  };
+
   return (
-    <div>
+    <div className="formInscription">
+    <div className="content">
+
       <p style={{ fontSize: "35px" }}> Formulaire d'inscription</p>
 
       <Form
@@ -239,7 +251,25 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
           </Row>
         </Checkbox.Group>
         <br />
+        <p style={{ fontSize: "20px" }}>Droit à l'image</p>
+        <Checkbox.Group
+        onChange={handleChangeDroitImage}
+        droitimage={droitImage}
+        >
+        <Checkbox value="Autrisation droit à l'image" style={{ paddingRight: 10 }} />
+        <Col span={8}>
+          <span className={isDarkMode ? "darkMode" : null}>
+            J'autorise l'AGSD à prendre des photos ou des videos pour
+            d'éventuelles parutions,projections événementielles pour
+            l'association (DVD, plaquettes, site web, articles de journaux,
+            calendrier...)
+          </span>
+        </Col>
+        </Checkbox.Group>
 
+        <br />
+
+        <p style={{ fontSize: "20px" }}>Documents à nous renvoyer</p>
         <div className=" downloadfile col-sm-9 formControls">
           <div>
             <label>Certificat Médical</label>
@@ -286,10 +316,12 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
             />
           </div>
         </div>
+        <br/>
         <Button variant="primary" type="submit">
           Envoyer
         </Button>
       </Form>
+    </div>
     </div>
   );
 };
