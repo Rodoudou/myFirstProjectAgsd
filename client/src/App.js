@@ -21,7 +21,7 @@ import HorairesJudoAdultes from "./components/Horaires/judo/HorairesJudoAdultes"
 import HorairesMmaAdultes from "./components/Horaires/mma/HorairesMmaAdultes";
 import HorairesMmaKids from "./components/Horaires/mma/HorairesMmaKids";
 
-import DarkModeToggle from "react-dark-mode-toggle";
+
 import FormFicheInscription from "./components/FormFicheInscription";
 import HorairesJjbKids from "./components/Horaires/jjb/HorairesJjbKids";
 import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
@@ -29,38 +29,34 @@ import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Tarifs from "./containers/tarifs";
 
+import DarkModeToggle from "react-dark-mode-toggle";
+
 // import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faCoffee, faKey } from '@fortawesome/free-solid-svg-icons';
-// library.add(faCoffee, faKey);
+// import { faCoffee, faKey, faMoon, faSun} from '@fortawesome/free-solid-svg-icons';
+// library.add(faCoffee, faKey,faMoon, faSun);
 
 const App = () => {
-  // STATES
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [planingShow, setPlaningShow] = useState(false);
-  const [tarifShow, setTarifShow] = useState(false);
 
-  const fermerModaleTarifs = () => {
-    setTarifShow(true);
-  };
-
-  // The toggle Dark Mode component
-  const Dark = () => {
-    return (
-      <DarkModeToggle onChange={setIsDarkMode} checked={isDarkMode} size={60} />
-    );
+const Dark = () => {
+  const handleChange = () => {
+    setIsDarkMode(!isDarkMode);
+    console.log("dark ici", isDarkMode);
   };
   return (
-    <Layout
-      isDarkMode={isDarkMode}
-      planingShow={planingShow}
-      setPlaningShow={setPlaningShow}
-      tarifShow={tarifShow}
-      setTarifShow={setTarifShow}
-      Dark={Dark}
-      fermerModaleTarifs={fermerModaleTarifs}
-    >
+    <DarkModeToggle
+      className="toggle"
+      onChange={handleChange}
+      checked={isDarkMode}
+      size={50}
+    />
+  );
+};
+
+  return (
+    <Layout Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
       <Routes>
-        <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
+        <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="sign_up" element={<Signup />} />
         <Route path="contact" element={<Contact />} />
@@ -70,10 +66,7 @@ const App = () => {
         <Route path="jjb" element={<HorairesJudoJjb />} />
         <Route path="mma" element={<HorairesMma />} />
         <Route path="horaires" element={<Horaires />} />
-        <Route
-          path="ficheinscription"
-          element={<FormFicheInscription isDarkMode={isDarkMode} Dark={Dark} />}
-        />
+        <Route path="ficheinscription" element={<FormFicheInscription />}/>
 
         {/* Judo/JJB */}
         <Route path="horaires/judo/kids" element={<HorairesJudoKids />} />

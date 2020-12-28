@@ -1,14 +1,12 @@
 import React from "react";
-import Tarifs from "../../containers/tarifs";
 import { Link } from "react-router-dom";
 
-
-const Menu = () => {
-
+const Menu = ({Dark}) => {
+ 
   return (
     <div>
-      <nav>
-        <div class="burger">&#9776;</div>
+      <nav className="nav-switch">
+        <div className="burger">&#9776;</div>
         <aside>
           <div id="navG">
             <ul>
@@ -26,9 +24,9 @@ const Menu = () => {
             <Link to="sign_up">M'inscrire</Link>
             <Link to="/login">Me connecter</Link>
           </ul>
+          <Dark/>
         </div>
       </nav>
-     
     </div>
   );
 };

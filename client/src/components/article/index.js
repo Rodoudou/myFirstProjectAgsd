@@ -3,7 +3,8 @@ import titles from "../../titres.json";
 const Article = ({ isDarkMode }) => {
   return (
     <section className="article-content">
-      <p>{titles.TitleHome}</p>
+      <p className="centered">{titles.TitleHome}</p>
+      <p className="centered-bis">AGSD COMBAT</p>
       <br />
 
       <div className="article-home" >

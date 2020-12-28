@@ -101,9 +101,9 @@ const Contact = () => {
                 >
                   <Form.Control className="textarea_contact"  as="textarea" rows={4} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <button  className="btn-contact" type="submit">
                   Envoyer
-                </Button>
+                </button>
               </Form>
             </div>
 

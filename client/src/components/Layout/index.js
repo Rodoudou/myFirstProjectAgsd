@@ -8,22 +8,14 @@ import HelpContact from '../../components/HelpContact';
 import Footer from '../../components/Footer';
 const {Content } = Layout;
 
-const AMRLayout = ({
-  children,
-  isDarkMode,
-  planingShow,
-  setPlaningShow,
-  tarifShow,
-  setTarifShow,
-  Dark,
-  fermerModaleTarifs,
-}) => {
-
+const AMRLayout = ({Dark, children,isDarkMode}) => {
+  console.log("dark layout", isDarkMode);
   return (
-    <Layout className={isDarkMode ? "darkMode" : null}>
+    <Layout className={isDarkMode?"darkMode":"lightMode"}>
     
-        <Menu/>
-      <Image src={banner} fluid="true" />
+        <Menu Dark={Dark}/>
+  
+      <Image className="banner" src={banner} fluid="true" />
 
       <Content id="content" children={children} />
       <HelpContact/>
