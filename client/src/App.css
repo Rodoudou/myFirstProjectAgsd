@@ -42,7 +42,7 @@ nav {
   z-index: 20;
 }
 .banner {
-  padding-top: 60px;
+  padding-top: 75px;
 }
 .centered {
   color: white;
@@ -176,6 +176,7 @@ nav form {
 .tarifs-content {
   height: 100vh;
   margin: auto;
+  text-align: center;
 }
 
 .textarea_contact {
@@ -253,6 +254,9 @@ section .home-content {
 .horaires {
   display: flex;
   flex-direction: row-reverse;
+}
+.title-horaire h1{
+  text-align: center;
 }
 
 .contact-content {

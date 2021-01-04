@@ -58,7 +58,7 @@ const Contact = () => {
           {/* <FacebookPage /> */}
           <div className="contact-content">
             <div className="contacts">
-              <p style={{fontSize:"35px"}}>{titles.titleContact}</p>
+              <h1 >{titles.titleContact}</h1>
               <br />
               <p>
                 Tél : 06 15 37 71 51 (Professeur)

@@ -2,6 +2,8 @@
     "TitleHome":"AGSD COMBAT Saint-Denis 93200 : Mixed Martial Arts (MMA), Judo, Jiu Jitsu Brésilien (JJB), Grappling, Boxe Muay Thaï et Lady Boxing à Saint-Denis",
     "titleInscription":"Comment s’abonner ?",
     "titleContact":"Nous contacter",
+    "tarifs":"Tarifs",
+    "horaires":"Horaires",
     "judo":{
     "titleJudo": "Judo",
     "titleJudoKids": "Judo Enfants"
@@ -19,5 +21,6 @@
     "titleMuayThaiKids":"Muay Thaï Enfants",
     "titleLadyBox":"Lady Boxing"
   }
+
    
 }

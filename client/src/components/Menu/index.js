@@ -12,7 +12,7 @@ const Menu = ({Dark}) => {
             <ul>
               <Link to="/">Accueil</Link>
               <Link to="/horaires">Horaires</Link>
-              <Link to="tarifs">Tarifs</Link>
+              <Link to="/tarifs">Tarifs</Link>
               <Link to="/inscription">Inscription</Link>
               <Link to="/contact">Contact</Link>
             </ul>
