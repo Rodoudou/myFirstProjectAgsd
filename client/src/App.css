@@ -52,6 +52,11 @@ nav {
   transform: translate(-50%, -50%);
 }
 
+/* taille Titre Banner */
+section .centered{
+  font-size: 30px;
+}
+
 .centered-bis{
   display: none;
 }
@@ -174,7 +179,6 @@ nav form {
 }
 
 .tarifs-content {
-  height: 100vh;
   margin: auto;
   text-align: center;
 }
@@ -254,6 +258,9 @@ section .home-content {
 .horaires {
   display: flex;
   flex-direction: row-reverse;
+}
+.horaire-cards-content{
+ text-align: center;
 }
 .title-horaire h1{
   text-align: center;
@@ -494,6 +501,7 @@ footer {
   background-color: #314456;
   border-top: 3px solid #3dc1a7;
   display: flex;
+  height: 200px;
 }
 
 footer div {
@@ -503,6 +511,7 @@ footer div {
 
 footer p {
   margin: 0;
+  color: #6c757d;
 }
   .active {
     display: block;
