@@ -17,6 +17,10 @@ body {
   color: white;
 }
 
+.titleLightMode{
+  color: white;
+}
+
 .lightMode {
   background-color: #fafafc;
   color: black;

@@ -53,19 +53,20 @@ const Dark = () => {
   );
 };
 
+
   return (
-    <Layout Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
+    <Layout  Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="sign_up" element={<Signup />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="tarifs" element={<Tarifs />} />
-        <Route path="inscription" element={<Inscription />} />
+        <Route path="contact" element={<Contact isDarkMode={isDarkMode} />} />
+        <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode}/>} />
+        <Route path="inscription" element={<Inscription isDarkMode={isDarkMode} />} />
         <Route path="judo" element={<HorairesJudoJjb />} />
         <Route path="jjb" element={<HorairesJudoJjb />} />
         <Route path="mma" element={<HorairesMma />} />
-        <Route path="horaires" element={<Horaires />} />
+        <Route path="horaires" element={<Horaires isDarkMode={isDarkMode} />} />
         <Route path="ficheinscription" element={<FormFicheInscription />}/>
 
         {/* Judo/JJB */}

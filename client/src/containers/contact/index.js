@@ -5,7 +5,7 @@ import titles from '../../titres.json';
 // import Map from "../../components/map";
 // import FacebookPage from "../../components/FacebookPage";
 
-const Contact = () => {
+const Contact = ({isDarkMode}) => {
   // les States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +58,7 @@ const Contact = () => {
           {/* <FacebookPage /> */}
           <div className="contact-content">
             <div className="contacts">
-              <h1 >{titles.titleContact}</h1>
+              <h1 className={isDarkMode?"titleLightMode":null}>{titles.titleContact}</h1>
               <br />
               <p>
                 Tél : 06 15 37 71 51 (Professeur)
