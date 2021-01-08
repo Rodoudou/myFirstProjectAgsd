@@ -2,7 +2,7 @@ import React from "react";
 import Article from "../../components/article";
 import VideoPresentation from "../../components/VideoPresentation";
 
-// import Map from "../../components/map";
+import Map from "../../components/map";
 
 
 function Home({isDarkMode}) {
@@ -14,7 +14,7 @@ function Home({isDarkMode}) {
         <section className="home-content" >
           <Article isDarkMode={isDarkMode}/>
         <VideoPresentation/>
-          {/* <Map /> */}
+          <Map />
         </section>
     </div>
     </div>

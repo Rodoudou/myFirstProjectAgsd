@@ -270,6 +270,11 @@ section .home-content {
   text-align: center;
 }
 
+.contact{
+  text-align: center;
+  margin: auto;
+}
+
 .contact-content {
   display: flex;
   flex-direction: column;

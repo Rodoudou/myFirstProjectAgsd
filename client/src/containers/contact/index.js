@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import titles from '../../titres.json';
-// import Map from "../../components/map";
+import Map from "../../components/map";
 // import FacebookPage from "../../components/FacebookPage";
 
 const Contact = ({isDarkMode}) => {
@@ -117,7 +117,7 @@ const Contact = ({isDarkMode}) => {
 
             <div className="acces-map">
             <p style={{fontSize:"35px"}}>ACCÈS</p>
-              {/* <Map /> */}
+              <Map />
             </div>
           </div>
         </div>
