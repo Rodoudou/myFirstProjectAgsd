@@ -5,8 +5,8 @@ import VideoPresentation from "../../components/VideoPresentation";
 import Map from "../../components/map";
 
 
-function Home({isDarkMode}) {
-
+const Home=({isDarkMode, isLog}) => {
+  console.log("Home - isLog", isLog);
   return (
     <div className="container">
     <div className="row">

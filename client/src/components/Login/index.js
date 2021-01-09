@@ -1,26 +1,16 @@
 import React,{useState} from "react";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 
-const Login = () => {
+const Login = ({onLogin,isLog,setIsLog}) => {
+  console.log("1- Login page- isLog", isLog);
   // les States
-const [token, setToken] = useState(Cookies.get("token") || null);
-  const [username, setUsername] = useState(Cookies.get("username") || "");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  
-
- const onLogin = (token, username) => {
- setToken(token);
-  setUsername(username);
-  Cookies.set("token", token);
-  Cookies.set("username", username);
- };
 
   const handleSubmit = async (e) => {
     try {
@@ -33,6 +23,8 @@ const [token, setToken] = useState(Cookies.get("token") || null);
       if (response.data.token) {
       onLogin(response.data.token, response.data.account.username);
       navigate('/');
+      setIsLog(!isLog);
+      console.log("2- login page", isLog);
       }else{
            alert("Erreur sur le mot de passe ou mail");
       }

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-const Menu = ({Dark}) => {
+const Menu = ({Dark,token, setToken, username ,isLog,setIsLog, onLogout}) => {
  
   return (
     <div>
@@ -22,10 +23,15 @@ const Menu = ({Dark}) => {
         <div id="navD">
           <ul>
             <Link to="sign_up">M'inscrire</Link>
-            <Link to="/login">Me connecter</Link>
+            <div>
+            {!token ? (
+              <Link to="/login">LogIn</Link>):(<Button onClick={onLogout}>LogOut</Button>
+            )}
+            </div>
           </ul>
           <Dark/>
         </div>
+            {token ? <span>User : {username} </span>:null}
       </nav>
     </div>
   );

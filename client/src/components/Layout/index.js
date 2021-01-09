@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}  from "react";
 import { Layout, Image } from "antd";
 import banner from "../../assets/img/banner-agsd.jpg";
 // import FacebookPage from "../../components/FacebookPage";
@@ -8,12 +8,12 @@ import HelpContact from '../../components/HelpContact';
 import Footer from '../../components/Footer';
 const {Content } = Layout;
 
-const AMRLayout = ({Dark, children,isDarkMode}) => {
-  console.log("dark layout", isDarkMode);
+const AMRLayout = ({ token, username, Dark, children, isLog,setIsLog,onLogout, isDarkMode}) => {
+  
   return (
     <Layout className={isDarkMode?"darkMode":"lightMode"}>
     
-        <Menu Dark={Dark}/>
+        <Menu onLogout={onLogout} token={token} username={username} isLog={isLog} setIsLog={setIsLog} Dark={Dark}/>
   
       <Image className="banner" src={banner} fluid="true" />
 

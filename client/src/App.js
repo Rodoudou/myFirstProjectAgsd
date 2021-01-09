@@ -28,20 +28,24 @@ import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
 import Signup from "./components/SignUp";
 import Login from "./components/Login";
 import Tarifs from "./containers/tarifs";
-
+import Cookies from "js-cookie";
 import DarkModeToggle from "react-dark-mode-toggle";
+import { useNavigate } from "react-router-dom";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey, faMoon, faSun} from '@fortawesome/free-solid-svg-icons';
 // library.add(faCoffee, faKey,faMoon, faSun);
 
 const App = () => {
+  
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [token, setToken] = useState(Cookies.get("token") || null);
+  const [username, setUsername] = useState(Cookies.get("username") || "");
+  const [isLog, setIsLog]=useState(false);
 
 const Dark = () => {
   const handleChange = () => {
     setIsDarkMode(!isDarkMode);
-    console.log("dark ici", isDarkMode);
   };
   return (
     <DarkModeToggle
@@ -52,13 +56,29 @@ const Dark = () => {
     />
   );
 };
+const navigate = useNavigate();
+// Se connecter
+const onLogin = (token, username,) => {
+  setToken(token);
+  setUsername(username);
+  Cookies.set("token", token);
+  Cookies.set("username", username);
 
+ };
+
+//  Se déconnecter
+const onLogout=()=>{
+  setToken(null);
+  Cookies.remove("token");
+  Cookies.remove("username");
+  navigate('/');
+}
 
   return (
-    <Layout  Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
+    <Layout onLogout={onLogout} token={token} username={username} Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
+        <Route path="/" element={<Home isLog={isLog} setIsLog={setIsLog} />} />
+        <Route path="login" element={<Login onLogin={onLogin} isLog={isLog} setIsLog={setIsLog} />} />
         <Route path="sign_up" element={<Signup />} />
         <Route path="contact" element={<Contact isDarkMode={isDarkMode} />} />
         <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode}/>} />
