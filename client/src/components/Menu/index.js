@@ -22,16 +22,18 @@ const Menu = ({Dark,token, setToken, username ,isLog,setIsLog, onLogout}) => {
 
         <div id="navD">
           <ul>
-            <Link to="sign_up">M'inscrire</Link>
-            <div>
+          {/* Faire appairaitre "M'inscrire" seulement si je ne suis pas isncrit */}
+            {!token ?<div id="barre-vertical"> <Link to="sign_up">M'inscrire</Link></div>:null}
+
+            <div id="login-connect">
             {!token ? (
-              <Link to="/login">LogIn</Link>):(<Button onClick={onLogout}>LogOut</Button>
+              <Link to="/login">LogIn</Link>):(<span className="btn-logOut" onClick={onLogout}>LogOut</span>
             )}
             </div>
           </ul>
           <Dark/>
         </div>
-            {token ? <span>User : {username} </span>:null}
+            {token ? <span>User : <span id="user-connect">{username}</span> </span>:null}
       </nav>
     </div>
   );
