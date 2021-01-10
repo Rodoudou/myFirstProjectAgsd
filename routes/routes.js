@@ -6,7 +6,6 @@ import { login} from "../controllers/loginControllers.js";
 import { postFiche } from "../controllers/ficheInscriptionControllers.js";
 
 const router = express.Router();
-
 // const cors = require('cors');
 // app.use(cors());
 

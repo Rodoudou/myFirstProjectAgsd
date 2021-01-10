@@ -3,8 +3,8 @@ import MyCard from "../../components/MyCard"
 import titles from '../../titres.json';
 
 const Horaires = ({lightTheme,isDarkMode, lightMode}) => {
-  console.log("lightTheme =>",lightTheme);
-  console.log("ici gros =>", lightMode);
+  // console.log("lightTheme =>",lightTheme);
+  // console.log("ici gros =>", lightMode);
 
   return (
     <div className="horaire-cards-content">

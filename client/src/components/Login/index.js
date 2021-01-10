@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const Login = ({onLogin,isLog,setIsLog}) => {
-  console.log("1- Login page- isLog", isLog);
+
   // les States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,12 +19,10 @@ const Login = ({onLogin,isLog,setIsLog}) => {
         email: email,
         password: password
       });
-      console.log("response.data in login", response.data);
       if (response.data.token) {
       onLogin(response.data.token, response.data.account.username);
       navigate('/');
       setIsLog(!isLog);
-      console.log("2- login page", isLog);
       }else{
            alert("Erreur sur le mot de passe ou mail");
       }

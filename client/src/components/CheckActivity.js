@@ -3,12 +3,11 @@ import { Checkbox, Row, Col } from "antd";
 
 const CheckActivity = () => {
   const [activities, setActivities] = useState([]);
-  console.log("staive =>",activities);
 
   const handleChangeActivity = (checkedValues) => {
     const activityChecked = checkedValues;
     setActivities(activityChecked);
-    console.log("activityChecked = ", activityChecked);
+    // console.log("activityChecked = ", activityChecked);
   };
 
   return (
