@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Route,Routes} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import NotFound from "./containers/notFound";
 import Home from "./containers/home";
@@ -30,7 +31,6 @@ import Login from "./components/Login";
 import Tarifs from "./containers/tarifs";
 import Cookies from "js-cookie";
 import DarkModeToggle from "react-dark-mode-toggle";
-import { useNavigate } from "react-router-dom";
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faCoffee, faKey, faMoon, faSun} from '@fortawesome/free-solid-svg-icons';

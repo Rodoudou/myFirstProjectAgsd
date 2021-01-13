@@ -1,4 +1,4 @@
-import React, {useState}  from "react";
+import React from "react";
 import { Layout, Image } from "antd";
 import banner from "../../assets/img/banner-agsd.jpg";
 // import FacebookPage from "../../components/FacebookPage";

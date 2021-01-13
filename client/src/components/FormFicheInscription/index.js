@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { Form, Button } from "react-bootstrap";
 import { Checkbox, Row, Col } from "antd";
 
-import Cookies from "js-cookie";
-
-const FormFicheInscription = ({ isDarkMode, Dark }) => {
+const FormFicheInscription = ({ isDarkMode}) => {
   // les States
   const [name, setName] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -18,10 +17,10 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
   const [phone, setPhone] = useState();
   const [activities, setActivities] = useState([]);
   const [droitImage, setDroitImage] = useState(false);
-  const [certificatM, setCertificatM] = useState();
-  const [photo, setPhoto] = useState();
-  const [autorisation, setAutorisation] = useState();
-  const [assurance, setAssurance] = useState();
+  const [certificatM, setCertificatM] = useState({});
+  const [photo, setPhoto] = useState({});
+  const [autorisation, setAutorisation] = useState({});
+  const [assurance, setAssurance] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,22 +42,27 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
     formData.append("autorisation", autorisation);
     formData.append("assurance", assurance);
 
-    const response = await axios.post("/fiche-inscription", formData
-    // , {
-    //   headers: {
-    //     authorization: "Berer " + Cookies.get("token"),
-    //   },
-    // }
+    try {
+        const response = await axios.post("/fiche-inscription", formData
+    , {
+      headers: {
+        authorization: "Bearer " + Cookies.get("token"),
+        "Content-Type": "multipart/form-data"
+      },
+    }
     );
+       alert(JSON.stringify(response.data));
 
-  console.log("formData", formData);
-    console.log("response", response);
-    // console.log({
-    //   certificatM,
-    //   photo,
-    //   autorisation,
-    //   assurance
-    // });
+    console.log("response.data", response.data);
+
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.error("An error occurred");
+      } else {
+        console.error(err.response.data.msg);
+      }
+    }
+  
   };
 
   const HandleChangeName = (e) => {
@@ -164,8 +168,8 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
         <Form
           className="ficheInscription"
           onSubmit={handleSubmit}
-          // action="/upload"
-          method="POST"
+          // action="/fiche-inscription"
+          // method="POST"
           type="submit"
         >
           <div>
