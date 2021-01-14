@@ -5,7 +5,7 @@ import {FicheInscription} from '../models/FicheInscriptionModel.mjs';
 
 
 export const postFiche = async (req, res)=>{
-    const body = res.fields;
+    const body = req.fields;
     console.log("/fiche-inscription = req.files", req.files);
     console.log("/fiche-inscription = req.fields", req.fields);
 

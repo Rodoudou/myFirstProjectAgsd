@@ -26,8 +26,8 @@ const FormFicheInscription = ({ isDarkMode}) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("firstname", name);
-    formData.append("lastname", prenom);
+    formData.append("firstname", prenom);
+    formData.append("lastname", name);
     formData.append("email", email);
     formData.append("sex", sex);
     formData.append("date", date);
