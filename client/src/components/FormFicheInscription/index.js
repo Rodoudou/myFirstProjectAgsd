@@ -49,7 +49,7 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
   const HandleChangeSex = (e) => {
     const sex = e.target.value;
     setSex(sex);
-    console.log("sex:", e.target.value);
+    // console.log("sex:", e.target.value);
   };
 
   const HandleChangeDate = (e) => {
@@ -90,7 +90,7 @@ const FormFicheInscription = ({ isDarkMode, Dark }) => {
   const handleChangeActivity = (checkedValues) => {
     const activityChecked = checkedValues;
     setActivities(activityChecked);
-    console.log("activityChecked = ", activityChecked);
+    // console.log("activityChecked = ", activityChecked);
   };
 
   return (

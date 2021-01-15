@@ -15,14 +15,15 @@ const encBase64 = require('crypto-js/enc-base64');
 //route  login
 export const login =  async (req, res) => {
     // Pour afficher les données reçues :
-    const body = req.body;
+    const body = req.fields;
     console.log("body login =>",body);
-    // on cherche le user qui veut se connecter
-    const user = await User.findOne({
-        email: body.email
-    });
-
+    
     try {
+        // on cherche le user qui veut se connecter
+        const user = await User.findOne({
+            email: body.email
+        });
+
     if (user) {
             // si le hash du mot de passe qu'il vient de saisir est le même que le hash enregistré en BDD lors de son inscription, alors c'est bon !
             if (SHA256(body.password + user.salt).toString(encBase64) === user.hash) {
@@ -37,7 +38,7 @@ export const login =  async (req, res) => {
 
             } else {
                 // sinon, il n'est pas autorisé à se connecter
-                res.json({
+                res.status(401).json({
                     error: "Unauthorized"
                 });
             }
@@ -48,7 +49,7 @@ export const login =  async (req, res) => {
         }
     } catch (error) {
         res.json({
-            error: error.message
+            message: error.message
         });
     }
 };

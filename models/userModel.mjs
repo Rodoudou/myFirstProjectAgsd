@@ -12,9 +12,6 @@ export const User = mongoose.model("User", {
         username: {
             type: String,
             required: true
-        },
-        phone: {
-            type: String
         }
     }
 });
