@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 const Menu = ({
   Dark,
   token,
-  setToken,
-  username,
-  isLog,
-  setIsLog,
+  user,
   onLogout,
 }) => {
+
   return (
     <div>
       <nav className="nav-switch">
@@ -50,7 +48,7 @@ const Menu = ({
         </div>
         {token ? (
           <span>
-            User : <span id="user-connect">{username}</span>{" "}
+            User : <span id="user-connect">{user}</span>{" "}
           </span>
         ) : null}
       </nav>

@@ -8,12 +8,12 @@ import HelpContact from '../../components/HelpContact';
 import Footer from '../../components/Footer';
 const {Content } = Layout;
 
-const AMRLayout = ({ token, username, Dark, children, isLog,setIsLog,onLogout, isDarkMode}) => {
-  
+const AMRLayout = ({ token, user, Dark, children, isLog,setIsLog,onLogout, isDarkMode}) => {
+
   return (
     <Layout className={isDarkMode?"darkMode":"lightMode"}>
     
-        <Menu onLogout={onLogout} token={token} username={username} isLog={isLog} setIsLog={setIsLog} Dark={Dark}/>
+        <Menu onLogout={onLogout} token={token} user={user} isLog={isLog} setIsLog={setIsLog} Dark={Dark}/>
   
       <Image className="banner" src={banner} fluid="true" />
 

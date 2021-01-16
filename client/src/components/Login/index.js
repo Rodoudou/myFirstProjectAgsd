@@ -13,12 +13,13 @@ const Login = ({onLogin,isLog,setIsLog}) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const response = await axios.post("/user/log_in", {
         email: email,
         password: password
       });
+   
       if (response.data.token) {
       onLogin(response.data.token, response.data.account.username);
       navigate('/');
@@ -55,7 +56,7 @@ const Login = ({onLogin,isLog,setIsLog}) => {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Enregistrer
+        Envoyer
       </Button>
     </Form>
 

@@ -39,10 +39,10 @@ import DarkModeToggle from "react-dark-mode-toggle";
 const App = () => {
   
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [token, setToken] = useState(Cookies.get("token") || null);
-  const [username, setUsername] = useState(Cookies.get("username") || "");
+  const [token, setToken] = useState(Cookies.get("userToken") || null);
+  const [user, setUser] = useState(Cookies.get("user") || "");
   const [isLog, setIsLog]=useState(false);
-
+console.log("user in App.js", user);
 const Dark = () => {
   const handleChange = () => {
     setIsDarkMode(!isDarkMode);
@@ -58,28 +58,27 @@ const Dark = () => {
 };
 const navigate = useNavigate();
 // Se connecter
-const onLogin = (token, username,) => {
+const onLogin = (token, user,) => {
   setToken(token);
-  setUsername(username);
-  Cookies.set("token", token);
-  Cookies.set("username", username);
-
+  setUser(user);
+  Cookies.set("userToken", token);
+  Cookies.set("user", user);
  };
 
 //  Se déconnecter
 const onLogout=()=>{
   setToken(null);
-  Cookies.remove("token");
-  Cookies.remove("username");
+  Cookies.remove("userToken");
+  Cookies.remove("user");
   navigate('/');
 }
 
   return (
-    <Layout onLogout={onLogout} token={token} username={username} Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
+    <Layout onLogout={onLogout} setToken={setToken} token={token} user={user} setUser={setUser}  Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
       <Routes>
         <Route path="/" element={<Home isLog={isLog} setIsLog={setIsLog} />} />
-        <Route path="login" element={<Login onLogin={onLogin} isLog={isLog} setIsLog={setIsLog} />} />
-        <Route path="sign_up" element={<Signup />} />
+        <Route path="login" element={<Login setUser={setUser} onLogin={onLogin} isLog={isLog} setIsLog={setIsLog} />} />
+        <Route path="sign_up" element={<Signup onLogin={onLogin}  token={token} setUser={setUser} user={user} />} />
         <Route path="contact" element={<Contact isDarkMode={isDarkMode} />} />
         <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode}/>} />
         <Route path="inscription" element={<Inscription isDarkMode={isDarkMode} />} />
