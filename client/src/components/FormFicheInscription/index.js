@@ -1,20 +1,13 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Form, Button } from "react-bootstrap";
 import { Checkbox, Row, Col } from "antd";
 
-const FormFicheInscription = ({ isDarkMode}) => {
+const FormFicheInscription = ({ isDarkMode }) => {
+  const { register, handleSubmit } = useForm();
   // les States
-  const [name, setName] = useState("");
-  const [prenom, setPrenom] = useState("");
-  const [sex, setSex] = useState("");
-  const [date, setDate] = useState();
-  const [email, setEmail] = useState("");
-  const [adresse, setAdresse] = useState("");
-  const [ville, setVille] = useState("");
-  const [codePostal, setCodePostal] = useState();
-  const [phone, setPhone] = useState();
   const [activities, setActivities] = useState([]);
   const [droitImage, setDroitImage] = useState(false);
   const [certificatM, setCertificatM] = useState({});
@@ -22,39 +15,35 @@ const FormFicheInscription = ({ isDarkMode}) => {
   const [autorisation, setAutorisation] = useState({});
   const [assurance, setAssurance] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (data) => {
+    console.log(data);
     const formData = new FormData();
-    formData.append("firstname", prenom);
-    formData.append("lastname", name);
-    formData.append("email", email);
-    formData.append("sex", sex);
-    formData.append("date", date);
-    formData.append("adresse", adresse);
-    formData.append("ville", ville);
-    formData.append("codePostal", codePostal);
-    formData.append("phone", phone);
+    formData.append("firstname", data.prenom);
+    formData.append("lastname", data.name);
+    formData.append("email", data.email);
+    formData.append("sex", data.sex);
+    formData.append("date", data.date);
+    formData.append("adresse", data.adresse);
+    formData.append("ville", data.city);
+    formData.append("codePostal", data.cdp);
+    formData.append("phone", data.phone);
     formData.append("activities", activities);
     formData.append("droitImage", droitImage);
-    formData.append("certificatM", certificatM);
+    formData.append("certificatM",certificatM);
     formData.append("photo", photo);
     formData.append("autorisation", autorisation);
     formData.append("assurance", assurance);
 
     try {
-        const response = await axios.post("/fiche-inscription", formData
-    , {
-      headers: {
-        authorization: "Bearer " + Cookies.get("token"),
-        "Content-Type": "multipart/form-data"
-      },
-    }
-    );
-       alert(JSON.stringify(response.data));
+      const response = await axios.post("/fiche-inscription", formData, {
+        headers: {
+          authorization: "Bearer " + Cookies.get("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      alert(JSON.stringify(response.data));
 
-    console.log("response.data", response.data);
-
+      console.log("response.data", response.data);
     } catch (err) {
       if (err.response.status === 500) {
         console.error("An error occurred");
@@ -62,60 +51,6 @@ const FormFicheInscription = ({ isDarkMode}) => {
         console.error(err.response.data.msg);
       }
     }
-  
-  };
-
-  const HandleChangeName = (e) => {
-    const name = e.target.value;
-    setName(name);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangePrenom = (e) => {
-    const prenom = e.target.value;
-    setPrenom(prenom);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangeSex = (e) => {
-    const sex = e.target.value;
-    setSex(sex);
-    console.log("sex:", e.target.value);
-  };
-
-  const HandleChangeDate = (e) => {
-    const date = e.target.value;
-    setDate(date);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangePhone = (e) => {
-    const phone = e.target.value;
-    setPhone(phone);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangeAdresse = (e) => {
-    const adresse = e.target.value;
-    setAdresse(adresse);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangeVille = (e) => {
-    const ville = e.target.value;
-    setVille(ville);
-    // console.log(e.target.value)
-  };
-
-  const HandleChangeCodePostal = (e) => {
-    const codePostal = e.target.value;
-    setCodePostal(codePostal);
-    // console.log(e.target.value)
-  };
-  const HandleChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-    // console.log(e.target.value)
   };
 
   const handleChangeActivity = (checkedValues) => {
@@ -134,28 +69,28 @@ const FormFicheInscription = ({ isDarkMode}) => {
 
   const handleChangeCertif = (e) => {
     const newCertif = e.target.files;
-    if (newCertif.length > 0){
+    if (newCertif.length > 0) {
       setCertificatM(newCertif[0]);
-    } 
+    }
   };
 
   const handleChangePhoto = (e) => {
     const newPhoto = e.target.files;
-    if(newPhoto.length > 0){
+    if (newPhoto.length > 0) {
       setPhoto(newPhoto[0]);
     }
   };
 
   const handleChangeAuthorisation = (e) => {
     const newAutorisation = e.target.files;
-    if(newAutorisation.length > 0){
+    if (newAutorisation.length > 0) {
       setAutorisation(newAutorisation[0]);
     }
   };
 
   const handleChangeAssurace = (e) => {
     const newAssurance = e.target.files;
-    if(newAssurance.length > 0){
+    if (newAssurance.length > 0) {
       setAssurance(newAssurance[0]);
     }
   };
@@ -167,42 +102,37 @@ const FormFicheInscription = ({ isDarkMode}) => {
 
         <Form
           className="ficheInscription"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           // action="/fiche-inscription"
           // method="POST"
           type="submit"
         >
           <div>
-            <Form.Group controlId="formBasicName" onChange={HandleChangeName}>
+            <Form.Group controlId="formBasicName">
               <Form.Control
                 type="text"
                 placeholder="Name"
-                defaultValue={name}
+                name="name"
+                ref={register}
               />
             </Form.Group>
 
-            <Form.Group
-              controlId="formBasicPrenom"
-              onChange={HandleChangePrenom}
-            >
+            <Form.Group controlId="formBasicPrenom">
               <Form.Control
                 type="text"
                 placeholder="Prenom"
-                defaultValue={prenom}
+                name="prenom"
+                ref={register}
               />
             </Form.Group>
           </div>
           <div>
-            <Form.Group controlId="formBasicDate" onChange={HandleChangeDate}>
-              <Form.Control type="date" defaultValue={date} />
+            <Form.Group controlId="formBasicDate">
+              <Form.Control type="date" name="date" ref={register} />
             </Form.Group>
 
-            <Form.Group
-              id="formGroup-option"
-              controlId="formBasicSex"
-              onChange={HandleChangeSex}
-            >
-              <Form.Control as="select">
+            <Form.Group id="formGroup-option" controlId="formBasicSex">
+              <Form.Control as="select" name="sex" ref={register}>
                 <option>Feminin</option>
                 <option>Masculin</option>
               </Form.Control>
@@ -210,81 +140,57 @@ const FormFicheInscription = ({ isDarkMode}) => {
           </div>
 
           <div>
-            <Form.Group
-              controlId="formBasicEmail"
-              onChange={HandleChangeEmail}
-              required
-              type="email"
-            >
+            <Form.Group controlId="formBasicEmail" required type="email">
               <Form.Control
                 type="text"
                 placeholder="Email"
-                defaultValue={email}
+                name="email"
+                ref={register}
               />
             </Form.Group>
 
-            <Form.Group
-              controlId="formBasicTel"
-              onChange={HandleChangePhone}
-              required
-              type="tel"
-            >
+            <Form.Group controlId="formBasicTel" required type="tel">
               <Form.Control
                 type="text"
                 placeholder="Tel"
-                defaultValue={phone}
+                name="phone"
+                ref={register}
               />
             </Form.Group>
           </div>
           <div>
-            <Form.Group
-              controlId="formBasicAdresse"
-              onChange={HandleChangeAdresse}
-              required
-              type="tel"
-            >
+            <Form.Group controlId="formBasicAdresse" required type="tel">
               <Form.Control
                 type="text"
                 placeholder="Adresse"
-                defaultValue={adresse}
+                name="adresse"
+                ref={register}
               />
             </Form.Group>
 
-            <Form.Group
-              controlId="formBasicCodePostal"
-              onChange={HandleChangeCodePostal}
-              required
-              type="text"
-            >
+            <Form.Group controlId="formBasicCodePostal" required type="text">
               <Form.Control
                 type="text"
                 placeholder="Code postal"
-                defaultValue={codePostal}
+                name="cdp"
+                ref={register}
               />
             </Form.Group>
           </div>
 
           <div>
-            <Form.Group
-              controlId="formBasicVille"
-              onChange={HandleChangeVille}
-              required
-              type="tel"
-            >
+            <Form.Group controlId="formBasicVille" required type="tel">
               <Form.Control
                 type="text"
                 placeholder="Ville"
-                defaultValue={ville}
+                name="city"
+                ref={register}
               />
             </Form.Group>
           </div>
 
           <p style={{ fontSize: "20px" }}>Activités choisies</p>
-          <Checkbox.Group
-            style={{ width: "100%" }}
-            onChange={handleChangeActivity}
-            activities={activities}
-          >
+          <Checkbox.Group style={{ width: "100%" }} onChange={handleChangeActivity} activities={activities}>
             <Row>
               <Col span={8}>
                 <Checkbox value="Judo">
@@ -322,10 +228,7 @@ const FormFicheInscription = ({ isDarkMode}) => {
           </Checkbox.Group>
           <br />
           <p style={{ fontSize: "20px" }}>Droit à l'image</p>
-          <Checkbox.Group
-            onChange={handleChangeDroitImage}
-            droitimage={droitImage ? 1 : 0}
-          >
+          <Checkbox.Group onChange={handleChangeDroitImage} droitimage={droitImage ? 1 : 0}>
             <Checkbox
               value="Autrisation droit à l'image"
               style={{ paddingRight: 10 }}
@@ -353,6 +256,8 @@ const FormFicheInscription = ({ isDarkMode}) => {
                 id="certificat_medical"
                 className="rsform-upload-box"
                 data-rsfp-size="10485760"
+                name="certificatM"
+                ref={register}
                 onChange={handleChangeCertif}
               />
             </div>
@@ -365,6 +270,8 @@ const FormFicheInscription = ({ isDarkMode}) => {
                 id="photo"
                 className="rsform-upload-box"
                 data-rsfp-size="10485760"
+                name="photo"
+                ref={register}
                 onChange={handleChangePhoto}
               />
             </div>
@@ -377,6 +284,8 @@ const FormFicheInscription = ({ isDarkMode}) => {
                 id="autorisation"
                 className="rsform-upload-box"
                 data-rsfp-size="10485760"
+                name="autorisation"
+                ref={register}
                 onChange={handleChangeAuthorisation}
               />
             </div>
@@ -389,6 +298,8 @@ const FormFicheInscription = ({ isDarkMode}) => {
                 id="assurance"
                 className="rsform-upload-box"
                 data-rsfp-size="10485760"
+                name="assurance"
+                ref={register}
                 onChange={handleChangeAssurace}
               />
             </div>

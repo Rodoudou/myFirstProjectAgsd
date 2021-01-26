@@ -34,6 +34,8 @@ const Menu = ({
               </div>
             ) : null}
 
+
+
             <div id="login-connect">
               {!token ? (
                 <Link to="/login">LogIn</Link>
@@ -46,11 +48,16 @@ const Menu = ({
           </ul>
           <Dark />
         </div>
+        
+        <div className="user_connect">
         {token ? (
           <span>
             User : <span id="user-connect">{user}</span>{" "}
           </span>
         ) : null}
+        </div>
+
+        
       </nav>
     </div>
   );

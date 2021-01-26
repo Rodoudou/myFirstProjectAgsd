@@ -46,7 +46,10 @@ autorisation: {
 assurance: {
     type: String
 },
-
+created: {
+    type: Date,
+    default: Date.now
+  },
 creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"

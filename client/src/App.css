@@ -73,6 +73,12 @@ nav form {
   margin: auto;
 }
 
+/* Use connect */
+nav .user_connect{
+  display: flex;
+  align-items: center;
+}
+
 .ant-image img {
   height: 200px;
 }
@@ -630,7 +636,12 @@ footer p {
     width: 100%;
   }
 
-  
+  /* Use connect */
+  nav .user_connect{
+    display: flex;
+    align-items: center;
+  }
+
   /* HOME/ARTICLE */
   section .article-home {
     width: 280px;

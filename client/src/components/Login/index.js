@@ -36,13 +36,13 @@ const Login = ({onLogin,isLog,setIsLog}) => {
   const HandleChangeEmail = (e) => {
     const email = e.target.value;
     setEmail(email);
-  console.log(e.target.value)
+  console.log("email : ",e.target.value)
   };
 
   const HandleChangePassword = (e) => {
     const password = e.target.value;
     setPassword(password);
-    // console.log(e.target.value)
+    console.log("password : ",e.target.value)
   };
   return (
     <div className="login-content">
