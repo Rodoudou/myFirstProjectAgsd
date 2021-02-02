@@ -12,7 +12,7 @@ const encBase64 = require('crypto-js/enc-base64');
 
 // Enregister un nouvel User dans la BDD et creation d'un password
 export const addUser =  async (req, res) => {
-    const body = req.body;
+    const body = req.fields;
     console.log('body 1ere route user/sign_up => ',body);
     //Data pour construction du password
     const token = uid2(64);

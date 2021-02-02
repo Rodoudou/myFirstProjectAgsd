@@ -15,7 +15,7 @@ const encBase64 = require('crypto-js/enc-base64');
 //route  login
 export const login =  async (req, res) => {
     // Pour afficher les données reçues :
-    const body = req.body;
+    const body = req.fields;
     console.log("body login =>",body);
     // on cherche le user qui veut se connecter
     const user = await User.findOne({

@@ -1,24 +1,32 @@
-import React,{useState} from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 
 const Login = ({onLogin,isLog,setIsLog}) => {
+  const {
+    register,
+    handleSubmit,
+    formState,
+    errors
+  } = useForm({ mode: "onTouched" });
+  const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
 
-  // les States
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
+    console.log("data du formLogin =>", data);
+    console.log("formState fromLogin =>", formState);
+
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
     try {
-      const response = await axios.post("/user/log_in", {
-        email: email,
-        password: password
-      });
+      const response = await axios.post("/user/log_in", formData);
    
       if (response.data.token) {
       onLogin(response.data.token, response.data.account.username);
@@ -33,26 +41,15 @@ const Login = ({onLogin,isLog,setIsLog}) => {
     }
   };
 
-  const HandleChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  console.log("email : ",e.target.value)
-  };
-
-  const HandleChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-    console.log("password : ",e.target.value)
-  };
   return (
     <div className="login-content">
-    <Form onSubmit={handleSubmit} action="Post" type="submit">
-      <Form.Group onChange={HandleChangeEmail} controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="Email" />
+    <Form  onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
+      <Form.Group controlId="formBasicEmail">
+        <Form.Control type="email" placeholder="Email" name="email"ref={register}/>
       </Form.Group>
 
-      <Form.Group onChange={HandleChangePassword} controlId="formBasicPassword">
-        <Form.Control type="password" placeholder="Password" />
+      <Form.Group controlId="formBasicPassword">
+        <Form.Control type="password" placeholder="Password" name="password"ref={register}/>
       </Form.Group>
 
       <Button variant="primary" type="submit">

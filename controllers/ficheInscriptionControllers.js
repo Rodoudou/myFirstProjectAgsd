@@ -7,7 +7,7 @@ export const postFiche = async (req, res) => {
   const body = req.fields;
   const bodyFiles = req.files;
 //   console.log("/fiche-inscription = req.files", bodyFiles);
-//   console.log("/fiche-inscription = req.fields", body);
+ console.log("/fiche-inscription = req.fields", body);
   //  console.log("req.user", req);
   try {
     const obj = {

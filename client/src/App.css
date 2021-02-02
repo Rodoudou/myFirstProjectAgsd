@@ -440,6 +440,14 @@ th {
   margin: auto;
 }
 /********************FICHE INSCRIPTION *************************************/
+.formInscription input{
+
+margin-right: 40px;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
 .formInscription {
   display: flex;
   flex-direction: column;

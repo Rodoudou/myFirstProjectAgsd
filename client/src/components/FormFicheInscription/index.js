@@ -6,7 +6,13 @@ import { Form, Button } from "react-bootstrap";
 import { Checkbox, Row, Col } from "antd";
 
 const FormFicheInscription = ({ isDarkMode }) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState,
+    errors
+  } = useForm({ mode: "onTouched" });
+  const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
   // les States
   const [activities, setActivities] = useState([]);
   const [droitImage, setDroitImage] = useState(false);
@@ -16,7 +22,9 @@ const FormFicheInscription = ({ isDarkMode }) => {
   const [assurance, setAssurance] = useState({});
 
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log("data du form =>", data);
+    console.log("formState =>", formState);
+
     const formData = new FormData();
     formData.append("firstname", data.prenom);
     formData.append("lastname", data.name);
@@ -29,12 +37,13 @@ const FormFicheInscription = ({ isDarkMode }) => {
     formData.append("phone", data.phone);
     formData.append("activities", activities);
     formData.append("droitImage", droitImage);
-    formData.append("certificatM",certificatM);
+    formData.append("certificatM", certificatM);
     formData.append("photo", photo);
     formData.append("autorisation", autorisation);
     formData.append("assurance", assurance);
 
     try {
+      console.log("errors du form =>", errors);
       const response = await axios.post("/fiche-inscription", formData, {
         headers: {
           authorization: "Bearer " + Cookies.get("token"),
@@ -43,7 +52,8 @@ const FormFicheInscription = ({ isDarkMode }) => {
       });
       alert(JSON.stringify(response.data));
 
-      console.log("response.data", response.data);
+      console.log(isSubmitted, isSubmitSuccessful);
+      // console.log("response.data", response.data);
     } catch (err) {
       if (err.response.status === 500) {
         console.error("An error occurred");
@@ -99,6 +109,11 @@ const FormFicheInscription = ({ isDarkMode }) => {
     <div className="formInscription">
       <div className="content">
         <p style={{ fontSize: "35px" }}> Formulaire d'inscription</p>
+        {isSubmitSuccessful && (
+          <div className="alert alert-success">
+            Merci pour votre inscription
+          </div>
+        )}
 
         <Form
           className="ficheInscription"
@@ -113,8 +128,11 @@ const FormFicheInscription = ({ isDarkMode }) => {
                 type="text"
                 placeholder="Name"
                 name="name"
-                ref={register}
+                ref={register({ required: "Vous devez entrer un nom" })}
               />
+              {errors.name && (
+                <span style={{ color: "red" }}>{errors.name.message}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formBasicPrenom">
@@ -122,14 +140,22 @@ const FormFicheInscription = ({ isDarkMode }) => {
                 type="text"
                 placeholder="Prenom"
                 name="prenom"
-                ref={register}
+                ref={register({ required: "Vous devez entrer un prénom" })}
               />
+              {errors.prenom && (
+                <span style={{ color: "red" }}>{errors.prenom.message}</span>
+              )}
             </Form.Group>
           </div>
           <div>
-            <Form.Group controlId="formBasicDate">
+      
+          <Form.Group controlId="formBasicDate">
               <Form.Control type="date" name="date" ref={register} />
+              {errors.date && (
+                <span style={{ color: "red" }}>{errors.date.message}</span>
+              )}
             </Form.Group>
+     
 
             <Form.Group id="formGroup-option" controlId="formBasicSex">
               <Form.Control as="select" name="sex" ref={register}>
@@ -140,57 +166,68 @@ const FormFicheInscription = ({ isDarkMode }) => {
           </div>
 
           <div>
-            <Form.Group controlId="formBasicEmail" required type="email">
+            <Form.Group controlId="formBasicEmail">
               <Form.Control
-                type="text"
+                type="email"
                 placeholder="Email"
                 name="email"
-                ref={register}
+                ref={register({
+                  required: "Vous devez entrer une adresse mail",
+                })}
               />
+              {errors.email && (
+                <span style={{ color: "red" }}>{errors.email.message}</span>
+              )}
             </Form.Group>
 
-            <Form.Group controlId="formBasicTel" required type="tel">
+            <Form.Group controlId="formBasicTel">
               <Form.Control
-                type="text"
+                type="tel"
                 placeholder="Tel"
                 name="phone"
-                ref={register}
+                ref={register({
+                  required: "Vous devez entrer un num de telephone",
+                })}
               />
             </Form.Group>
           </div>
           <div>
-            <Form.Group controlId="formBasicAdresse" required type="tel">
+            <Form.Group controlId="formBasicAdresse">
               <Form.Control
                 type="text"
                 placeholder="Adresse"
                 name="adresse"
-                ref={register}
+                ref={register({ required: "Vous devez entrer une adresse" })}
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicCodePostal" required type="text">
+            <Form.Group controlId="formBasicCodePostal">
               <Form.Control
                 type="text"
                 placeholder="Code postal"
                 name="cdp"
-                ref={register}
+                ref={register({ required: "Vous devez entrer le CDP" })}
               />
             </Form.Group>
           </div>
 
           <div>
-            <Form.Group controlId="formBasicVille" required type="tel">
+            <Form.Group controlId="formBasicVille">
               <Form.Control
                 type="text"
                 placeholder="Ville"
                 name="city"
-                ref={register}
+                ref={register({ required: "Vous devez entrer une ville" })}
               />
             </Form.Group>
           </div>
 
           <p style={{ fontSize: "20px" }}>Activités choisies</p>
-          <Checkbox.Group style={{ width: "100%" }} onChange={handleChangeActivity} activities={activities}>
+          <Checkbox.Group
+            style={{ width: "100%" }}
+            onChange={handleChangeActivity}
+            activities={activities}
+          >
             <Row>
               <Col span={8}>
                 <Checkbox value="Judo">
@@ -228,7 +265,10 @@ const FormFicheInscription = ({ isDarkMode }) => {
           </Checkbox.Group>
           <br />
           <p style={{ fontSize: "20px" }}>Droit à l'image</p>
-          <Checkbox.Group onChange={handleChangeDroitImage} droitimage={droitImage ? 1 : 0}>
+          <Checkbox.Group
+            onChange={handleChangeDroitImage}
+            droitimage={droitImage ? 1 : 0}
+          >
             <Checkbox
               value="Autrisation droit à l'image"
               style={{ paddingRight: 10 }}
@@ -305,7 +345,7 @@ const FormFicheInscription = ({ isDarkMode }) => {
             </div>
           </div>
           <br />
-          <Button variant="primary" type="submit">
+          <Button disabled={isSubmitting} variant="primary" type="submit">
             Envoyer
           </Button>
         </Form>
