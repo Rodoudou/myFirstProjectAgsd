@@ -10,8 +10,7 @@ const Login = ({onLogin,isLog,setIsLog}) => {
   const {
     register,
     handleSubmit,
-    formState,
-    errors
+    formState
   } = useForm({ mode: "onTouched" });
   const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
 
