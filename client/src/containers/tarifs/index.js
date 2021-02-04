@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
-
-function Tarifs() {
+import titles from '../../titres.json';
+function Tarifs({isDarkMode}) {
   return (
     <div className="container">
       <div className="row">
         <div className="tarifs-content">
-
+            <h1 className={isDarkMode?"titleLightMode":null}>{titles.tarifs} </h1>
           <Table className="tarifs shadowTab">
             <thead>
               <tr>

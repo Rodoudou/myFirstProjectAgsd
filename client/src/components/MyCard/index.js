@@ -27,7 +27,7 @@ const disciplines = [
 ];
 
 const activity = disciplines.map((sport, i) => {
-  console.log(sport);
+  // console.log(sport);
   return (
     <div key={sport.name}>
       <Link to={sport.route}>

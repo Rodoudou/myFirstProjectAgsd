@@ -13,21 +13,21 @@ const index = () => {
 
                 <div className="icon">
                 <Link to="/contact">
-                <img src={email} fluid="true" />
+                <img src={email} fluid="true" alt="emailIcone"/>
                     <p className="gras">agsdcombat@gmail.com</p>
                 </Link>
                 </div>
 
                 <div className="icon">
                     <Link to="#">
-                    <img src={tel} fluid="true" />
+                    <img src={tel} fluid="true" alt="telephoneIcone"/>
                     <p className="gras">+33615377151</p>
                     </Link>
                 </div>
 
                 <div className="icon">
                     <Link to="#">
-                    <img src={faq} fluid="true" />
+                    <img src={faq} fluid="true" alt="faqIcone"/>
                     <p className="gras">(incl.FAQ)</p>
                     </Link>
                 </div>

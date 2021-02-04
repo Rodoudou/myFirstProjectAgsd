@@ -1,67 +1,62 @@
-import React,{useState} from "react";
-// import Cookies from "js-cookie";
-//import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 
-const Login = () => {
-  // les States
-  // const [token, setToken] = useState(Cookies.get("token") || null);
-  // const [username, setUsername] = useState(Cookies.get("username") || "");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
-  // const history = useHistory();
-  // const onLogin = (token, username) => {
-  //   setToken(token);
-  //   setUsername(username);
-  //   Cookies.set("token", token);
-  //   Cookies.set("username", username);
-  // };
+const Login = ({onLogin,isLog,setIsLog}) => {
+  const {
+    register,
+    handleSubmit,
+    formState
+  } = useForm({ mode: "onTouched" });
+  const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
 
-  const handleSubmit = async (e) => {
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    console.log("data du formLogin =>", data);
+    console.log("formState fromLogin =>", formState);
+
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
     try {
-      e.preventDefault();
-      const response = await axios.post("/user/log_in", {
-        email: email,
-        password: password
-      });
-      console.log("response.data in login", response.data);
+      const response = await axios.post("/user/log_in", formData);
+   
       if (response.data.token) {
-        // onLogin(response.data.token, response.data.account.username);
-      //  history.push("/");
+      onLogin(response.data.token, response.data.account.username);
+      navigate('/');
+      setIsLog(!isLog);
+      }else{
+           alert("Erreur sur le mot de passe ou mail");
       }
     } catch (error) {
       console.log(error.message);
+   
     }
   };
 
-  const HandleChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  console.log(e.target.value)
-  };
-
-  const HandleChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-    // console.log(e.target.value)
-  };
   return (
-    <Form onSubmit={handleSubmit} action="Post" type="submit">
-      <Form.Group onChange={HandleChangeEmail} controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="Email" />
+    <div className="login-content">
+    <Form  onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
+      <Form.Group controlId="formBasicEmail">
+        <Form.Control type="email" placeholder="Email" name="email"ref={register}/>
       </Form.Group>
 
-      <Form.Group onChange={HandleChangePassword} controlId="formBasicPassword">
-        <Form.Control type="password" placeholder="Password" />
+      <Form.Group controlId="formBasicPassword">
+        <Form.Control type="password" placeholder="Password" name="password"ref={register}/>
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Enregistrer
+        Envoyer
       </Button>
     </Form>
+
+    </div>
   );
 };
 

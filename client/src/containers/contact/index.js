@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import axios from "axios";
 import titles from '../../titres.json';
-// import Map from "../../components/map";
+import Map from "../../components/map";
 // import FacebookPage from "../../components/FacebookPage";
 
-const Contact = () => {
+const Contact = ({isDarkMode}) => {
   // les States
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +58,7 @@ const Contact = () => {
           {/* <FacebookPage /> */}
           <div className="contact-content">
             <div className="contacts">
-              <p style={{fontSize:"35px"}}>{titles.titleContact}</p>
+              <h1 className={isDarkMode?"titleLightMode":null}>{titles.titleContact}</h1>
               <br />
               <p>
                 Tél : 06 15 37 71 51 (Professeur)
@@ -101,9 +101,9 @@ const Contact = () => {
                 >
                   <Form.Control className="textarea_contact"  as="textarea" rows={4} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <button  className="btn-contact" type="submit">
                   Envoyer
-                </Button>
+                </button>
               </Form>
             </div>
 
@@ -117,7 +117,7 @@ const Contact = () => {
 
             <div className="acces-map">
             <p style={{fontSize:"35px"}}>ACCÈS</p>
-              {/* <Map /> */}
+              <Map />
             </div>
           </div>
         </div>

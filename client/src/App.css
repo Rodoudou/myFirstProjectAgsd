@@ -8,24 +8,87 @@ body {
   font-size: 18px;
   line-height: 40px;
 }
-
+.app{
+  margin: auto;
+}
 /* Dark Mode toggle */
 .darkMode {
-  background-color: black;
+  background-color: #314456;
+  color: white;
+}
+
+.titleLightMode{
   color: white;
 }
 
 .lightMode {
-  background-color: green;
+  background-color: #fafafc;
+  color: black;
+}
+
+.switch-dark-mode {
+  margin: 0;
+  padding: 0;
 }
 
 /* ************************ Menu ***********************************/
 nav {
-  background-color: #f8f8f8;
+  overflow: hidden;
+  /* a cause de la position fixed le menu en mobile napparait pas */
+  position: fixed; 
+  /* *********************************** */
+  top: 0;
+  width: 100%;
+  background-color: #fafafc;
   border-bottom: 1px solid #ccc;
-  grid-area: nav;
   display: flex;
   justify-content: space-around;
+  z-index: 20;
+}
+.banner {
+  padding-top: 75px;
+}
+.centered {
+  color: white;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* taille Titre Banner */
+section .centered{
+  font-size: 30px;
+}
+
+.centered-bis{
+  display: none;
+}
+nav .custom-switch {
+  padding: 0;
+}
+nav form {
+  margin: 0;
+  padding: 0;
+  margin: auto;
+}
+
+/* Use connect */
+nav .user_connect{
+  display: flex;
+  align-items: center;
+}
+
+.ant-image img {
+  height: 200px;
+}
+
+.login-content {
+  height: 40vh;
+}
+
+.signUp-content {
+  height: 40vh;
 }
 
 .burger {
@@ -69,18 +132,43 @@ nav {
 #navD {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+}
+#user-connect{
+  color: tomato;
+}
+
+.nav-switch span {
+  color: #333;
+  font-size: 14px;
+  padding: 17px 9px;
+} 
+#navD span {
+  color: #333;
+  font-size: 14px;
+  padding: 17px 9px;
+}
+
+#navD span:hover {
+  color: #3dc1a7;
+  transition: 0.5s;
 }
 
 #navD ul {
   margin: 0;
   padding: 0;
   display: flex;
+  margin-right: 90px;
 }
 
-#navD a {
+#barre-vertical {
   list-style: none;
   padding: 0 9px;
   border-right: 1px solid #333;
+}
+
+#login-connect{
+  padding: 0 9px;
 }
 
 #navD a:hover {
@@ -88,9 +176,9 @@ nav {
   transition: 0.5s;
 }
 
-#navD a:last-child {
+/* #navD a:last-child {
   border-right: none;
-}
+} */
 #navD a {
   text-decoration: none;
   color: #333;
@@ -115,35 +203,6 @@ nav {
 .myCard img {
   height: 200px;
 }
-/************************** Modale antd ******************************/
-.ant-modal-footer {
-  display: none;
-}
-
-.modal-horaires {
-  margin: auto;
-  width: 500px;
-  height: 500px;
-}
-
-.ant-menu {
-  background-color: #001529;
-  color: white;
-}
-.ant-menu ul {
-  color: red;
-}
-
-.nav-content {
-  background-image: url("./assets/img/banner.jpg");
-}
-/* ca supprime le toggle */
-.ant-menu > button {
-  /* display: none; */
-  background-color: tomato;
-  width: 50%;
-  height: 100%;
-}
 
 .container {
   height: 100%;
@@ -153,7 +212,8 @@ nav {
 }
 
 .tarifs-content {
-  height: 100vh;
+  margin: auto;
+  text-align: center;
 }
 
 .textarea_contact {
@@ -231,6 +291,17 @@ section .home-content {
 .horaires {
   display: flex;
   flex-direction: row-reverse;
+}
+.horaire-cards-content{
+ text-align: center;
+}
+.title-horaire h1{
+  text-align: center;
+}
+
+.contact{
+  text-align: center;
+  margin: auto;
 }
 
 .contact-content {
@@ -369,6 +440,27 @@ th {
   margin: auto;
 }
 /********************FICHE INSCRIPTION *************************************/
+.formInscription input{
+
+margin-right: 40px;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+.formInscription {
+  display: flex;
+  flex-direction: column;
+}
+.content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formInscription button {
+  width: 400px;
+  padding: 10px 0;
+}
 
 .ficheInscription div {
   display: flex;
@@ -380,6 +472,23 @@ th {
   width: 250px;
   height: 36px;
 }
+
+form .btn-contact {
+  background-color: #3dc1a7;
+  color: white;
+  width: 200px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+form .btn-contact:focus {
+  outline: none;
+}
+form button:hover {
+  background-color: #58968a;
+}
 /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
 input[type="date"]::before {
   content: attr(placeholder) "Nés le: ";
@@ -390,7 +499,6 @@ input[type="date"]:focus::before {
 }
 #helpContact {
   background-color: #fff;
-  padding-bottom: 100px;
 }
 
 .icon {
@@ -426,51 +534,55 @@ input[type="date"]:focus::before {
   text-align: right;
 }
 
+.downloadfile input {
+  margin-left: 10px;
+}
+
 .downloadfile label {
-  margin-right: 10px;
-  width: 350px;
+  width: 200px;
 }
 /* **************** FOOTER ************************ */
 
 footer {
   background-color: #314456;
-  grid-area: footer;
   border-top: 3px solid #3dc1a7;
+  display: flex;
+  height: 200px;
 }
 
+footer div {
+  display: flex;
+  margin: auto;
+}
+
+footer p {
+  margin: 0;
+  color: #6c757d;
+}
+  .active {
+    display: block;
+  }
+  
+  .shadowTab {
+    box-shadow: 7px 7px 5px #999;
+  }
 /* ************************************************* */
 
-@media screen and (max-width: 800px) {
-  body {
-    font-size: 16px;
-    line-height: 25px;
-  }
-  /* H1 de la HOME */
-  .article-content > p {
-    font-size: 25px;
-    letter-spacing: 1px;
-    line-height: 35px;
-    width: 450px;
-  }
-  .ficheInscription div input {
-    width: 210px;
-    height: 36px;
-  }
-  /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
-  input[type="date"]::before {
-    content: none;
-  }
+@media screen and (max-width:1159px){
 
-  #formGroup-option {
-    width: 210px;
+  .centered{
+    display: none;
   }
-}
-.active {
-  display: block;
-}
-
-.shadowTab {
-  box-shadow: 7px 7px 5px #999;
+  
+  .centered-bis{
+    display: inline ;
+    color: white;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -482,10 +594,25 @@ footer {
     line-height: 30px;
   }
 
+  
   nav {
+
     height: 40px;
     justify-content: center;
   }
+  .banner {
+    padding-top: 40px;
+  }
+  .centered-bis{
+    display: inline ;
+    color: white;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
   #navG {
     background-color: #475a6d;
     flex-direction: column;
@@ -516,6 +643,13 @@ footer {
     top: 40px;
     width: 100%;
   }
+
+  /* Use connect */
+  nav .user_connect{
+    display: flex;
+    align-items: center;
+  }
+
   /* HOME/ARTICLE */
   section .article-home {
     width: 280px;
@@ -529,4 +663,42 @@ footer {
   section > p {
     display: none;
   }
+
+  #helpContact h2{
+    color: #3dc1a7;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .helpContactDetail{
+    flex-direction: column;
+  }
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  
+  /* H1 de la HOME */
+  .article-content > p {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 35px;
+    width: 450px;
+  }
+  .ficheInscription div input {
+    width: 210px;
+    height: 36px;
+  }
+  /* inclure un placeholder à l'input DATE (pour le component FormFicheInscription*/
+  input[type="date"]::before {
+    content: none;
+  }
+
+  #formGroup-option {
+    width: 210px;
+  }
+}
+

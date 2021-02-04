@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 // import FacebookPage from "../../components/FacebookPage";
 
-function Inscription() {
+function Inscription({isDarkMode}) {
   return (
     <div className="container">
       <div className="row">
@@ -12,7 +12,7 @@ function Inscription() {
           className="inscription-content">
           {/* <FacebookPage /> */}
           <div className="text-inscription">
-            <p style={{ fontSize: "35px" }}>{titles.titleInscription}</p>
+            <h1 className={isDarkMode?"titleLightMode":null}>{titles.titleInscription}</h1>
             <p>
               Pour vous inscrire rien de plus simple, il vous suffit de
               télécharger et de remplir la feuille d’inscription et y joindre :

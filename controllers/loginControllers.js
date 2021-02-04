@@ -30,11 +30,12 @@ export const login =  async (req, res) => {
                 return res.json({
                     _id: user._id,
                     token: user.token,
+                    email: user.email,
                     account: {
                         username: user.account.username,
                         phone: user.account.phone
                     }
-                })
+                });
 
             } else {
                 // sinon, il n'est pas autorisé à se connecter

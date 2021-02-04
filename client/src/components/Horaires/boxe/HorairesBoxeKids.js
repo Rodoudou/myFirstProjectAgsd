@@ -4,8 +4,8 @@ import { Table } from "react-bootstrap";
 
 const HorairesBoxeKids = () => {
   return (
-    <div>
-      <p style={{ fontSize: 30 }}>{titles.boxe.titleMuayThaiKids}</p>
+    <div className="title-horaire">
+      <h1>{titles.boxe.titleMuayThaiKids}</h1>
       <Table striped bordered hover className="shadowTab">
         <thead>
           <tr>
