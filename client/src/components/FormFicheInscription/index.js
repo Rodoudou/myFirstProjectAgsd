@@ -52,10 +52,15 @@ const FormFicheInscription = ({ isDarkMode }) => {
       });
       alert(JSON.stringify(response.data));
 
-  const HandleChangeSex = (e) => {
-    const sex = e.target.value;
-    setSex(sex);
-    // console.log("sex:", e.target.value);
+      console.log(isSubmitted, isSubmitSuccessful);
+      // console.log("response.data", response.data);
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.error("An error occurred");
+      } else {
+        console.error(err.response.data.msg);
+      }
+    }
   };
 
   const handleChangeActivity = (checkedValues) => {
@@ -93,10 +98,11 @@ const FormFicheInscription = ({ isDarkMode }) => {
     }
   };
 
-  const handleChangeActivity = (checkedValues) => {
-    const activityChecked = checkedValues;
-    setActivities(activityChecked);
-    // console.log("activityChecked = ", activityChecked);
+  const handleChangeAssurace = (e) => {
+    const newAssurance = e.target.files;
+    if (newAssurance.length > 0) {
+      setAssurance(newAssurance[0]);
+    }
   };
 
   return (
