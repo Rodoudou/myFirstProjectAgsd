@@ -118,8 +118,6 @@ const FormFicheInscription = ({ isDarkMode }) => {
         <Form
           className="ficheInscription"
           onSubmit={handleSubmit(onSubmit)}
-          // action="/fiche-inscription"
-          // method="POST"
           type="submit"
         >
           <div>
