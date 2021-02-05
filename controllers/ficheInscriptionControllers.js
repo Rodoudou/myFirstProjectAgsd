@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-export const postFiche = async (req, res)=>{
-    console.log("/fiche-inscription", req.body);
-    await res.send(req.body)
-}
-=======
 import cloudinary from "cloudinary";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -110,4 +104,3 @@ export const postFiche = async (req, res) => {
 //       res.send('No file uploaded!');
 //     }
 //   };
->>>>>>> firstBranch

@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from 'mongoose';
 import formidableMiddleWare from "express-formidable";
 import routes from "./routes/routes.js";
-import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import cors from "cors";
 // import cloudinary from "cloudinary";
