@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # google map component
-Key_api.js
+.env
