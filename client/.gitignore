@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # variable google api key for google map
-Key_api.js
+.env
