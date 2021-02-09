@@ -86,7 +86,7 @@ const onLogout=()=>{
         <Route path="jjb" element={<HorairesJudoJjb />} />
         <Route path="mma" element={<HorairesMma />} />
         <Route path="horaires" element={<Horaires isDarkMode={isDarkMode} />} />
-        <Route path="ficheinscription" element={<FormFicheInscription />}/>
+        <Route path="ficheinscription" element={<FormFicheInscription user={user} />}/>
 
         {/* Judo/JJB */}
         <Route path="horaires/judo/kids" element={<HorairesJudoKids />} />

@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { Form, Button } from "react-bootstrap";
 import { Checkbox, Row, Col } from "antd";
 
-const FormFicheInscription = ({ isDarkMode }) => {
+const FormFicheInscription = ({ isDarkMode, user }) => {
   const {
     register,
     handleSubmit,
@@ -28,6 +28,7 @@ const FormFicheInscription = ({ isDarkMode }) => {
     const formData = new FormData();
     formData.append("firstname", data.prenom);
     formData.append("lastname", data.name);
+    formData.append("creator", user);
     formData.append("email", data.email);
     formData.append("sex", data.sex);
     formData.append("date", data.date);
@@ -41,6 +42,7 @@ const FormFicheInscription = ({ isDarkMode }) => {
     formData.append("photo", photo);
     formData.append("autorisation", autorisation);
     formData.append("assurance", assurance);
+
 
     try {
       console.log("errors du form =>", errors);
