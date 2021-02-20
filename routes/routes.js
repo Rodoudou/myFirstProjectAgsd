@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import { catchErrors } from "../helpers.js";
 import { getPost } from "../controllers/emailControllers.js";
 import { addUser } from "../controllers/usersControllers.js";
@@ -15,8 +16,10 @@ router.get("/", (req, res) => {
 });
 
 //Authentication
-router.post("/user/sign_up", catchErrors(addUser));
-router.post("/user/log_in", catchErrors(login));
+router.post("/signup",
+passport({session:false}),
+ catchErrors(addUser));
+router.post("/log_in", catchErrors(login));
 
 router.post("/mail", catchErrors(getPost));
 router.post("/fiche-inscription", catchErrors(postFiche));

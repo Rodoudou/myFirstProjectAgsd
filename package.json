@@ -17,14 +17,19 @@
   "type": "module",
   "dependencies": {
     "@std/esm": "^0.26.0",
+    "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.10.12",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "uid2": "0.0.3"
   },
   "devDependencies": {

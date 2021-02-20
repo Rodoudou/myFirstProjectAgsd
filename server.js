@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from 'mongoose';
 import formidableMiddleWare from "express-formidable";
 import routes from "./routes/routes.js";
+import './auth/auth.js';
 import dotenv from "dotenv";
 import cors from "cors";
 // import cloudinary from "cloudinary";
