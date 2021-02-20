@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 //importation des models
-import {User} from '../models/userModel.mjs';
+import Usermodel from '../models/userModel.js';
 
 
 //parametres pour crypter le password
@@ -20,7 +20,7 @@ export const login =  async (req, res) => {
     
     try {
         // on cherche le user qui veut se connecter
-        const user = await User.findOne({
+        const user = await Usermodel.findOne({
             email: body.email
         });
 

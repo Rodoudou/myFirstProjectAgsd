@@ -78,7 +78,7 @@ const onLogout=()=>{
       <Routes>
         <Route path="/" element={<Home isLog={isLog} setIsLog={setIsLog} />} />
         <Route path="login" element={<Login setUser={setUser} onLogin={onLogin} isLog={isLog} setIsLog={setIsLog} />} />
-        <Route path="sign_up" element={<Signup onLogin={onLogin}  token={token} setUser={setUser} user={user} />} />
+        <Route path="signup" element={<Signup onLogin={onLogin}  token={token} setUser={setUser} user={user} />} />
         <Route path="contact" element={<Contact isDarkMode={isDarkMode} />} />
         <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode}/>} />
         <Route path="inscription" element={<Inscription isDarkMode={isDarkMode} />} />

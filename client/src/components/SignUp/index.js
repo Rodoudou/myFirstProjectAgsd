@@ -34,7 +34,7 @@ const SignUp = ({ setUser, onLogin }) => {
       // 2. Appeler le serveur
 
       try {
-        const response = await axios.post("/user/sign_up", formData);
+        const response = await axios.post("/user/signup", formData);
 
         console.log(response.data);
 
@@ -78,7 +78,7 @@ const SignUp = ({ setUser, onLogin }) => {
           <Form.Control
             type="tel"
             placeholder="Phone"
-            name="tel"
+            name="phone"
             ref={register}
           />
         </Form.Group>

@@ -1,7 +1,7 @@
-// require('dotenv').config();
-// // import { createRequire } from 'module';
-// // const require = createRequire(import.meta.url);
-// const mongoose = require("mongoose");
+// import mongoose from 'mongoose';
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 // export const bdd = mongoose.connect(
 //     process.env.MONGODB_URI, {
@@ -11,6 +11,6 @@
 //     }
 // )
 // .then(() => {
-//     console.log('Connection etabli avec MongoDB');
+//     console.log('Connection etabli avec MongDB');
 // })
 // .catch(error => console.error(error.message));

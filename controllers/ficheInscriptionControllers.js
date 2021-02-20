@@ -1,8 +1,8 @@
 import cloudinary from "cloudinary";
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-import { FicheInscription } from "../models/FicheInscriptionModel.mjs";
-import { User } from "../models/userModel.mjs";
+import {FicheInscription} from "../models/FicheInscriptionModel.js";
+import UserModel from "../models/userModel.js";
 
 export const postFiche = async (req, res) => {
   const body = req.fields;
@@ -10,7 +10,7 @@ export const postFiche = async (req, res) => {
   //   console.log("/fiche-inscription = req.files", bodyFiles);
   console.log("/fiche-inscription = req.fields", body);
   //  console.log("req.user", req);
-  const user = await User.findOne({email:body.email});
+  const user = await UserModel.findOne({email:body.email});
   console.log("user in findOne()", user);
   console.log("creator: user.account.username",user);
   try {

@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
 
-import UserModel from "../models/userModel.mjs";
+import UserModel from "../models/userModel.js";
 
 passport.use(
   "signup",

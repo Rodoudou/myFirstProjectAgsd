@@ -30,7 +30,7 @@ const Menu = ({
             {!token ? (
               <div id="barre-vertical">
                 {" "}
-                <Link to="sign_up">M'inscrire</Link>
+                <Link to="signup">M'inscrire</Link>
               </div>
             ) : null}
 

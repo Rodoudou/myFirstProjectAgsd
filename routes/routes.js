@@ -16,9 +16,11 @@ router.get("/", (req, res) => {
 });
 
 //Authentication
-router.post("/signup",
-passport({session:false}),
+router.post("/user/signup",
+passport.authenticate('signup',{session:false}),
  catchErrors(addUser));
+
+ 
 router.post("/log_in", catchErrors(login));
 
 router.post("/mail", catchErrors(getPost));
