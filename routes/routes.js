@@ -26,6 +26,5 @@ router.post("/log_in", catchErrors(login));
 router.post("/mail", catchErrors(getPost));
 router.post("/fiche-inscription", catchErrors(postFiche));
 
-// router.post("/upload", catchErrors(uploadFichiers));
 
 export default router;

@@ -4,7 +4,7 @@ const body = req.fields;
 console.log(body);
 res.json({
     message: "Signup OK!",
-    user: req.user
+    user: body.username
 })
    
 
