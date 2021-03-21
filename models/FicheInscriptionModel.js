@@ -25,7 +25,7 @@ export const FicheInscription = mongoose.model("FicheInscription", {
   codePostal: {
     type: String,
   },
-  ville: {
+  city: {
     type: String,
   },
   activities: {

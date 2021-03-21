@@ -7,13 +7,47 @@ passport.use(
   "signup",
   new Strategy(
     {
-      usernameField: "email",
+      emailField: "email",
+      usernameField: "username",
+      phoneField: "phone",
+      passwordField: "password",
+    },
+    async (email,username,phone, password, done) => {
+      try {
+        const user = await UserModel.create({
+          email,
+          username,
+          phone,
+          password
+        });
+        return done(null, user);
+      } catch (error) {
+        done(error);
+      }
+    }
+  )
+);
+
+passport.use(
+  "login",
+  new Strategy(
+    {
+      emailField: "email",
       passwordField: "password",
     },
     async (email, password, done) => {
       try {
-        const user = await UserModel.create({ email, password });
-        return done(null, user);
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+          return done(null, false, { message: "Utilisateur non trouvé" });
+        }
+
+        const validate = await user.isValidPassword(password);
+        if (!validate) {
+          return done(null, false, { message: "Erreur de connexion" });
+        }
+
+        return done(null, user, { message: "Connexion réussie" });
       } catch (error) {
         done(error);
       }

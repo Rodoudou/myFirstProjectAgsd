@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Route,Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import NotFound from "./containers/notFound";
@@ -22,7 +22,6 @@ import HorairesJudoAdultes from "./components/Horaires/judo/HorairesJudoAdultes"
 import HorairesMmaAdultes from "./components/Horaires/mma/HorairesMmaAdultes";
 import HorairesMmaKids from "./components/Horaires/mma/HorairesMmaKids";
 
-
 import FormFicheInscription from "./components/FormFicheInscription";
 import HorairesJjbKids from "./components/Horaires/jjb/HorairesJjbKids";
 import HorairesJjbAdultes from "./components/Horaires/jjb/HorairesJjbAdultes";
@@ -37,56 +36,90 @@ import DarkModeToggle from "react-dark-mode-toggle";
 // library.add(faCoffee, faKey,faMoon, faSun);
 
 const App = () => {
-  
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [user, setUser] = useState(Cookies.get("user") || "");
-  const [isLog, setIsLog]=useState(false);
-console.log("user in App.js", user);
-const Dark = () => {
-  const handleChange = () => {
-    setIsDarkMode(!isDarkMode);
+  const [isLog, setIsLog] = useState(false);
+  console.log("user in App.js", user);
+  const Dark = () => {
+    const handleChange = () => {
+      setIsDarkMode(!isDarkMode);
+    };
+    return (
+      <DarkModeToggle
+        className="toggle"
+        onChange={handleChange}
+        checked={isDarkMode}
+        size={50}
+      />
+    );
   };
-  return (
-    <DarkModeToggle
-      className="toggle"
-      onChange={handleChange}
-      checked={isDarkMode}
-      size={50}
-    />
-  );
-};
-const navigate = useNavigate();
-// Se connecter
-const onLogin = (token, user,) => {
-  setToken(token);
-  setUser(user);
-  Cookies.set("userToken", token);
-  Cookies.set("user", user);
- };
+  const navigate = useNavigate();
+  // Se connecter
+  const onLogin = (token, user) => {
+    setToken(token);
+    setUser(user);
+    Cookies.set("userToken", token);
+    Cookies.set("user", user);
+  };
 
-//  Se déconnecter
-const onLogout=()=>{
-  setToken(null);
-  Cookies.remove("userToken");
-  Cookies.remove("user");
-  navigate('/');
-}
+  //  Se déconnecter
+  const onLogout = () => {
+    setToken(null);
+    Cookies.remove("userToken");
+    Cookies.remove("user");
+    navigate("/");
+  };
 
   return (
-    <Layout onLogout={onLogout} setToken={setToken} token={token} user={user} setUser={setUser}  Dark={Dark} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} >
+    <Layout
+      onLogout={onLogout}
+      setToken={setToken}
+      token={token}
+      user={user}
+      setUser={setUser}
+      Dark={Dark}
+      isDarkMode={isDarkMode}
+      setIsDarkMode={setIsDarkMode}
+    >
       <Routes>
         <Route path="/" element={<Home isLog={isLog} setIsLog={setIsLog} />} />
-        <Route path="login" element={<Login setUser={setUser} onLogin={onLogin} isLog={isLog} setIsLog={setIsLog} />} />
-        <Route path="signup" element={<Signup onLogin={onLogin}  token={token} setUser={setUser} user={user} />} />
+        <Route
+          path="login"
+          element={
+            <Login
+              setUser={setUser}
+              onLogin={onLogin}
+              isLog={isLog}
+              setIsLog={setIsLog}
+            />
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            <Signup
+              onLogin={onLogin}
+              token={token}
+              setUser={setUser}
+              user={user}
+            />
+          }
+        />
         <Route path="contact" element={<Contact isDarkMode={isDarkMode} />} />
-        <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode}/>} />
-        <Route path="inscription" element={<Inscription isDarkMode={isDarkMode} />} />
+        <Route path="tarifs" element={<Tarifs isDarkMode={isDarkMode} />} />
+        <Route
+          path="inscription"
+          element={<Inscription isDarkMode={isDarkMode} />}
+        />
         <Route path="judo" element={<HorairesJudoJjb />} />
         <Route path="jjb" element={<HorairesJudoJjb />} />
         <Route path="mma" element={<HorairesMma />} />
         <Route path="horaires" element={<Horaires isDarkMode={isDarkMode} />} />
-        <Route path="ficheinscription" element={<FormFicheInscription user={user} />}/>
+        <Route
+          path="ficheinscription"
+          element={<FormFicheInscription user={user} />}
+        />
 
         {/* Judo/JJB */}
         <Route path="horaires/judo/kids" element={<HorairesJudoKids />} />

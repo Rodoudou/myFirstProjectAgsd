@@ -3,7 +3,7 @@ import passport from "passport";
 import { catchErrors } from "../helpers.js";
 import { getPost } from "../controllers/emailControllers.js";
 import { addUser } from "../controllers/usersControllers.js";
-import { login } from "../controllers/loginControllers.js";
+
 import {
   postFiche,
   // uploadFichiers
@@ -16,15 +16,31 @@ router.get("/", (req, res) => {
 });
 
 //Authentication
-router.post("/user/signup",
-passport.authenticate('signup',{session:false}),
+router.post("/signup",
+ passport.authenticate('signup',{session:false}),
  catchErrors(addUser));
 
  
-router.post("/log_in", catchErrors(login));
+router.post("/login",(req,res, next)=>{
+  passport.authenticate('login', async (err, user)=>{
+    try {
+      if(err || !user){
+        const error = new Error('Une erreur est survenue.')
+        return next(error);
+      }
+      req.login(user, {session:false}, async error =>{
+        if(error) return next(error)
+
+        const body = {id: user._id, email: user.email}
+        res.json(body)
+      })
+    } catch (error) {
+      return next(error)
+    }
+  })(req, res, next)
+})
 
 router.post("/mail", catchErrors(getPost));
 router.post("/fiche-inscription", catchErrors(postFiche));
-
 
 export default router;

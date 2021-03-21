@@ -1,5 +1,5 @@
   
-import {User} from '../models/userModel.mjs';
+import {User} from '../models/userModel.js';
 
 export const isAuthenticated = async(req,res,next)=>{
 

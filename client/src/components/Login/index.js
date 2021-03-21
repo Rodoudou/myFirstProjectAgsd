@@ -25,7 +25,7 @@ const Login = ({onLogin,isLog,setIsLog}) => {
     formData.append("email", data.email);
     formData.append("password", data.password);
     try {
-      const response = await axios.post("/user/log_in", formData);
+      const response = await axios.post("/login", formData);
    
       if (response.data.token) {
       onLogin(response.data.token, response.data.account.username);
