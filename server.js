@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import formidableMiddleWare from "express-formidable";
 import routes from "./routes/routes.js";
 import "./auth/auth.js";
 import dotenv from "dotenv";
@@ -27,7 +26,6 @@ app.use(express.static("public"));
 app.use(cors());
 
 app.use(express.json());
-app.use(formidableMiddleWare());
 
 app.use(routes);
 

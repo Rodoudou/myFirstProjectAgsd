@@ -2,7 +2,7 @@ import express from "express";
 import passport from "passport";
 import { catchErrors } from "../helpers.js";
 import { getPost } from "../controllers/emailControllers.js";
-import { addUser } from "../controllers/usersControllers.js";
+import { addUser } from "../controllers/usersController.js";
 
 import {
   postFiche,
@@ -13,6 +13,12 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.send("Hello Redouane Amrani");
+});
+
+router.get("/test", (req, res) => {
+  const body = req.query
+  console.log(body);
+  res.json(body);
 });
 
 //Authentication

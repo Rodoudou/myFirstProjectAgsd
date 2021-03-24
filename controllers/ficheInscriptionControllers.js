@@ -5,10 +5,10 @@ import {FicheInscription} from "../models/FicheInscriptionModel.js";
 import UserModel from "../models/userModel.js";
 
 export const postFiche = async (req, res) => {
-  const body = req.fields;
-  const bodyFiles = req.files;
+  const body = req.body;
+//  const bodyFiles = req.files;
   //   console.log("/fiche-inscription = req.files", bodyFiles);
-  console.log("/fiche-inscription = req.fields", body);
+  console.log("/fiche-inscription = req.body", body);
   //  console.log("req.user", req);
   const user = await UserModel.findOne({email:body.email});
   console.log("user in findOne()", user);
@@ -56,7 +56,7 @@ export const postFiche = async (req, res) => {
       autorisation: bodyFil.autorisation,
       assurance: bodyFil.assurance,
       created: newFichInscription.created,
-      creator: newFichInscription.creator,
+      // creator: newFichInscription.creator,
     });
   } catch (error) {
     res.json(400).json({
@@ -65,43 +65,3 @@ export const postFiche = async (req, res) => {
   }
 };
 
-// Uploader plusieurs fichiers
-// export const uploadFichiers =  async (req, res) => {
-//     console.log("req.files = > /upload",req.files);
-//     // les différentes clés des fichiers (file1, file2, file3...)
-//     const files = Object.keys(req.files);
-//     if (files.length) {
-//       const results = {};
-//       // on parcourt les fichiers
-//       files.forEach(fileKey => {
-//         // on utilise les path de chaque fichier (la localisation temporaire du fichier sur le serveur)
-//         cloudinary.v2.uploader.upload(
-//           req.files[fileKey].path,
-//           {
-//             // on peut préciser un dossier dans lequel stocker l'image
-//             folder: 'some_folder'
-//           },
-//           (error, result) => {
-//             // on enregistre le résultat dans un objet
-//             if (error) {
-//               results[fileKey] = {
-//                 success: false,
-//                 error: error,
-//               };
-//             } else {
-//               results[fileKey] = {
-//                 success: true,
-//                 result: result,
-//               };
-//             }
-//             if (Object.keys(results).length === files.length) {
-//               // tous les uploads sont terminés, on peut donc envoyer la réponse au client
-//               return res.json(results);
-//             }
-//           }
-//         );
-//       });
-//     } else {
-//       res.send('No file uploaded!');
-//     }
-//   };

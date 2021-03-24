@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "google-map-react": "^2.1.6",
     "history": "^5.0.0",
+    "http-proxy-middleware": "^1.0.6",
     "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
@@ -34,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": [
       "react-app",

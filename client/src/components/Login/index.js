@@ -5,15 +5,9 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
-const Login = ({onLogin,isLog,setIsLog}) => {
-  const {
-    register,
-    handleSubmit,
-    formState
-  } = useForm({ mode: "onTouched" });
+const Login = ({ onLogin, isLog, setIsLog }) => {
+  const { register, handleSubmit, formState } = useForm({ mode: "onTouched" });
   const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
-
 
   const navigate = useNavigate();
 
@@ -26,36 +20,48 @@ const Login = ({onLogin,isLog,setIsLog}) => {
     formData.append("password", data.password);
     try {
       const response = await axios.post("/login", formData);
-   
+
       if (response.data.token) {
-      onLogin(response.data.token, response.data.account.username);
-      navigate('/');
-      setIsLog(!isLog);
-      }else{
-           alert("Erreur sur le mot de passe ou mail");
+        onLogin(response.data.token, response.data.account.username);
+        navigate("/");
+        setIsLog(!isLog);
+      } else {
+        alert("Erreur sur le mot de passe ou mail");
       }
     } catch (error) {
       console.log(error.message);
-   
     }
   };
 
   return (
     <div className="login-content">
-    <Form  onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
-      <Form.Group controlId="formBasicEmail">
-        <Form.Control type="email" placeholder="Email" name="email"ref={register}/>
-      </Form.Group>
+      <Form onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
+        <Form.Group controlId="formBasicEmail">
+          <Form.Control
+            type="email"
+            placeholder="Email"
+            name="email"
+            defaultValue="aurele75@email.com"
+            ref={register({ required: "Vous devez rentrer votre email" })}
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Control type="password" placeholder="Password" name="password"ref={register}/>
-      </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            defaultValue="aurele75"
+            ref={register({
+              required: "Vous devez entrer votre mot de passe",
+            })}
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Envoyer
-      </Button>
-    </Form>
-
+        <Button variant="primary" type="submit">
+          Envoyer
+        </Button>
+      </Form>
     </div>
   );
 };

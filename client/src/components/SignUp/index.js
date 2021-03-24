@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import Cookies from "js-cookie";
+
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ setUser, onLogin }) => {
@@ -25,42 +24,25 @@ const SignUp = ({ setUser, onLogin }) => {
     console.log("errors form signup =>", errors);
     console.log("1");
 
-    
-    const result = formData.username.match(/^[a-z0-9_-]{3,15}$/);
-
-    // le pseudo doit etre composé de lettre entre  a-z et de nombres de 0-9 avec une taille de 3-15 caracteres
-    if (result === null) {
-      alert("le username n'est pas valide");
-      return;
-    }
-
-    // 1. Valider le formulaire
-    // Vérifier les données sont corrects (password === password2)
-    // debugger;
-    if (formData.password === formData.password2) {
-      console.log("2");
-      
-      // 2. Appeler le serveur
-      try {
-        console.log("3");
-        const response = await axios.post("/signup", {formData});
-
-        console.log("response in signup", response);
-
-        if (response.data.token) {
-          const token = response.data.token;
-
-          onLogin(token, response.data.account.username);
-
-          // 3. Aller sur la page d'accueil
-          navigate("/");
-        }
-      } catch (error) {
-        alert("An error occurred");
-        console.log("error.message = ", error);
+    try {
+      // envoyer la data sur /signup
+      console.log(data.username);
+      const response = await fetch("/signup", { formData });
+      console.log("response =>",response);
+      if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        throw new Error(message);
       }
+    
+      const userData = await response.json();
+      return userData;
+      
+    } catch (error) {
+      console.error("error.message=>",error.message);
     }
-  };
+  
+  
+};
 
   return (
     <div className="signUp-content">
@@ -68,7 +50,7 @@ const SignUp = ({ setUser, onLogin }) => {
       {isSubmitSuccessful && (
         <div className="alert alert-success">Merci pour votre inscription</div>
       )}
-      <Form onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
+      <Form onSubmit={handleSubmit(onSubmit)} methode="Post" type="submit">
         <Form.Group controlId="formBasicEmail">
           <Form.Control
             type="email"

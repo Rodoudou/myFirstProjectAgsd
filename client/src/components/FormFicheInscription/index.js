@@ -45,33 +45,15 @@ const FormFicheInscription = ({ isDarkMode, user }) => {
   });
 
 
-  const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("creator", user);
-    formData.append("firstname", prenom);
-    formData.append("lastname", name);
-    formData.append("date", date);
-    formData.append("sex", sex);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("adresse", adresse);
-    formData.append("codePostal", cdp);
-    formData.append("city", city);
-    formData.append("activities", activities);
-    formData.append("droitImage", droitImage);
-    formData.append("certificatM", certificatM);
-    formData.append("photo", photo);
-    formData.append("autorisation", autorisation);
-    formData.append("assurance", assurance);
+  const handleSubmit = async (data) => {
+
+    const formData = data;
+  
     
-    console.log("formData =>", formData);
+    console.log("formData in fiche-inscription =>", formData);
     try {
-      const response = await axios.post("/fiche-inscription", formData, {
-        headers: {
-          authorization: "Bearer " + Cookies.get("token"),
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post("/fiche-inscription", {formData});
+      
       alert(JSON.stringify(response.data));
 
       // console.log("response.data", response.data);
