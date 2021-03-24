@@ -2,10 +2,8 @@ POST http://localhost:5000/signup HTTP/1.1
 Content-Type: application/json
 
 {
-   "email":"test@test.com",
-   "username":"aurele",
-   "phone":"0625252525",
-   "password":"azerty"
+    "email":"papou@test1.com",
+    "password":"azerty"
 }
 ###
 
@@ -13,6 +11,6 @@ POST http://localhost:5000/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
+    "email":"papou@test1.com",
     "password":"azerty"
 }
