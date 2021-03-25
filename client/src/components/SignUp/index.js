@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
+import axios from 'axios';
 
 import { useNavigate } from "react-router-dom";
 
@@ -26,23 +27,13 @@ const SignUp = ({ setUser, onLogin }) => {
 
     try {
       // envoyer la data sur /signup
-      console.log(data.username);
-      const response = await fetch("/signup", { formData });
-      console.log("response =>",response);
-      if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
-        throw new Error(message);
-      }
-    
-      const userData = await response.json();
-      return userData;
-      
+      const response = await axios.post("/signup", formData);
+      console.log("response =>", response);
+
     } catch (error) {
-      console.error("error.message=>",error.message);
+      console.error("error.message=>", error.message);
     }
-  
-  
-};
+  };
 
   return (
     <div className="signUp-content">

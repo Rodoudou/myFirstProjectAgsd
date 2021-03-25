@@ -15,11 +15,6 @@ router.get("/", (req, res) => {
   res.send("Hello Redouane Amrani");
 });
 
-router.get("/test", (req, res) => {
-  const body = req.query
-  console.log(body);
-  res.json(body);
-});
 
 //Authentication
 router.post("/signup",

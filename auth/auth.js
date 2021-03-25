@@ -7,7 +7,7 @@ passport.use(
   "signup",
   new Strategy(
     {
-      usernameField : "email",   
+      usernameField : "email",
       passwordField: "password",
     },
     async (email, password, done) => {
