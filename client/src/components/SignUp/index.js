@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ setUser, onLogin }) => {
+const SignUp = ({onLogin }) => {
   const { register, handleSubmit, formState, errors, setError } = useForm({
     mode: "onTouched",
   });
@@ -25,14 +25,23 @@ const SignUp = ({ setUser, onLogin }) => {
     console.log("errors form signup =>", errors);
     console.log("1");
 
+ 
+    
     try {
       // envoyer la data sur /signup
       const response = await axios.post("/signup", formData);
       console.log("response =>", response);
+      console.log("response.data.token =>", response.data.token);
+ 
+      //onLogin(token, response.data.user.username);
+        // 3. Aller sur la page d'accueil
+        navigate("/");
+      
 
     } catch (error) {
       console.error("error.message=>", error.message);
     }
+  
   };
 
   return (

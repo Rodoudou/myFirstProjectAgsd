@@ -3,7 +3,7 @@ import passport from "passport";
 import { catchErrors } from "../helpers.js";
 import { getPost } from "../controllers/emailControllers.js";
 import { addUser } from "../controllers/usersController.js";
-
+//import { loginRoute } from "../controllers/loginController.js";
 import {
   postFiche,
   // uploadFichiers
