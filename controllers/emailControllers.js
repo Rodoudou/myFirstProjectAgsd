@@ -1,10 +1,12 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
+import dotenv from 'dotenv';
+dotenv.config();
 
-const API_KEY = 'f3be2af94df1f59e0ca6f438564466af-ea44b6dc-4115538e';
-const DOMAIN = 'sandbox399bda58188e4154a03a8ae7b3cf3a15.mailgun.org';
+const API_KEY = process.env.API_KEY_MAILGUN;
+const DOMAIN = process.env.DOMAIN;
 const mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
-const myAddMail = 'agsdcombat@gmail.com';
+const myAddMail = process.env.MY_ADD_MAIL;
 
 
 // Route Post recuperer data du form contact côté front puis envoyer via MailGun
