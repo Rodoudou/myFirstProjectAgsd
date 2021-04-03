@@ -41,6 +41,23 @@ const App = () => {
   const [user, setUser] = useState(Cookies.get("user") || "");
   const [isLog, setIsLog]=useState(false);
 console.log("user in App.js", user);
+const navigate = useNavigate();
+// Se connecter
+const onLogin = (token, user,) => {
+  setToken(token);
+  setUser(user);
+  Cookies.set("userToken", token);
+  Cookies.set("user", user);
+};
+
+//  Se déconnecter
+const onLogout=()=>{
+  setToken(null);
+  Cookies.remove("userToken");
+  Cookies.remove("user");
+  navigate('/');
+}
+
 const Dark = () => {
   const handleChange = () => {
     setIsDarkMode(!isDarkMode);
@@ -54,23 +71,6 @@ const Dark = () => {
     />
   );
 };
-const navigate = useNavigate();
-// Se connecter
-const onLogin = (token, user,) => {
-  setToken(token);
-  setUser(user);
-  Cookies.set("userToken", token);
-  Cookies.set("user", user);
- };
-
-//  Se déconnecter
-const onLogout=()=>{
-  setToken(null);
-  Cookies.remove("userToken");
-  Cookies.remove("user");
-  navigate('/');
-}
-
   return (
     <Layout
       onLogout={onLogout}

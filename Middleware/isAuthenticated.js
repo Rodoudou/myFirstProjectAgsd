@@ -1,8 +1,7 @@
-  
-import {User} from '../models/userModel.mjs';
+import User from '../models/userModel.js';
 
 export const isAuthenticated = async(req,res,next)=>{
-
+console.log("req isAuth", req);
     if(req.headers.authorization){
         const user = await User.findOne({
             token:req.headers.authorization.replace("Bearer ","")

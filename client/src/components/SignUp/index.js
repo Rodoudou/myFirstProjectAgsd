@@ -1,11 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
-import axios from 'axios';
-
+import axios from "axios";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({onLogin }) => {
+const SignUp = ({setUser, onLogin}) => {
+
+
+  const navigate = useNavigate();
+
   const { register, handleSubmit, formState, errors, setError } = useForm({
     mode: "onTouched",
   });
@@ -16,32 +20,31 @@ const SignUp = ({onLogin }) => {
     `isSubmitSuccessful => ${isSubmitSuccessful}`
   );
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     const formData = data;
+    
     console.log("data du form =>", formData);
     console.log("formState =>", formState);
     console.log("errors form signup =>", errors);
-    console.log("1");
-
- 
     
     try {
       // envoyer la data sur /signup
       const response = await axios.post("/signup", formData);
-      console.log("response =>", response);
-      console.log("response.data.token =>", response.data.token);
- 
-      //onLogin(token, response.data.user.username);
-        // 3. Aller sur la page d'accueil
-        navigate("/");
-      
+      const token = response.data.token;
+      Cookies.set("userToken", token, { expires: 7 });
+      setUser(response.data.username);
 
+      console.log("response =>", response);
+      console.log("response.data.username =>", response.data.username);
+      console.log("response.data.token =>", response.data.token);
+
+      onLogin(token, response.data.username);
+
+      // 3. Aller sur la page d'accueil
+      navigate("/");
     } catch (error) {
       console.error("error.message=>", error.message);
     }
-  
   };
 
   return (

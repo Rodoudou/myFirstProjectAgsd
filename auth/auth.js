@@ -7,14 +7,14 @@ passport.use(
   "signup",
   new Strategy(
     {
-      usernameField : "email",
+      usernameField: "email",
       passwordField: "password",
     },
     async (email, password, done) => {
       try {
         const user = await UserModel.create({
           email,
-          password
+          password,
         });
         return done(null, user);
       } catch (error) {
