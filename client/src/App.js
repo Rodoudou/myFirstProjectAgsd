@@ -39,38 +39,38 @@ const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [token, setToken] = useState(Cookies.get("userToken") || null);
   const [user, setUser] = useState(Cookies.get("user") || "");
-  const [isLog, setIsLog]=useState(false);
-console.log("user in App.js", user);
-const navigate = useNavigate();
-// Se connecter
-const onLogin = (token, user,) => {
-  setToken(token);
-  setUser(user);
-  Cookies.set("userToken", token);
-  Cookies.set("user", user);
-};
-
-//  Se déconnecter
-const onLogout=()=>{
-  setToken(null);
-  Cookies.remove("userToken");
-  Cookies.remove("user");
-  navigate('/');
-}
-
-const Dark = () => {
-  const handleChange = () => {
-    setIsDarkMode(!isDarkMode);
+  const [isLog, setIsLog] = useState(false);
+  console.log("user in App.js", user);
+  const navigate = useNavigate();
+  // Se connecter
+  const onLogin = (token, user) => {
+    setToken(token);
+    setUser(user);
+    Cookies.set("userToken", token, { expires: 7 });
+    Cookies.set("user", user);
   };
-  return (
-    <DarkModeToggle
-      className="toggle"
-      onChange={handleChange}
-      checked={isDarkMode}
-      size={50}
-    />
-  );
-};
+
+  //  Se déconnecter
+  const onLogout = () => {
+    setToken(null);
+    Cookies.remove("userToken");
+    Cookies.remove("user");
+    navigate("/");
+  };
+
+  const Dark = () => {
+    const handleChange = () => {
+      setIsDarkMode(!isDarkMode);
+    };
+    return (
+      <DarkModeToggle
+        className="toggle"
+        onChange={handleChange}
+        checked={isDarkMode}
+        size={50}
+      />
+    );
+  };
   return (
     <Layout
       onLogout={onLogout}
@@ -88,6 +88,7 @@ const Dark = () => {
           path="login"
           element={
             <Login
+              user={user}
               setUser={setUser}
               onLogin={onLogin}
               isLog={isLog}

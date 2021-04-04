@@ -30,7 +30,7 @@ export const postFiche = async (req, res) => {
       photo: bodyFiles.photo.path,
       autorisation: bodyFiles.autorisation.path,
       assurance: bodyFiles.assurance.path,
-      creator: user.account.username,
+      creator: user.creator.username,
     };
 
     console.log("OBJ =>", obj);
