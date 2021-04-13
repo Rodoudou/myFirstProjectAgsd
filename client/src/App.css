@@ -1,6 +1,15 @@
 @import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-
+:root {
+  --bg-color: white;
+  --text-color: #4a4a4a;
+  --text-color-light: #6e6e6e;
+  --main-color: #1983ca;
+  --main-color-hover: #1c92e1;
+  --main-color-light-hover: #f4f9fc;
+  --harline-color: #e3e3e3;
+  --footer-bg-color: #314455;
+}
 body {
   margin: 0px;
   padding: 0px;
@@ -8,7 +17,7 @@ body {
   font-size: 18px;
   line-height: 40px;
 }
-.app{
+.app {
   margin: auto;
 }
 /* Dark Mode toggle */
@@ -17,7 +26,7 @@ body {
   color: white;
 }
 
-.titleLightMode{
+.titleLightMode {
   color: white;
 }
 
@@ -32,36 +41,100 @@ body {
 }
 
 /* ************************ Menu ***********************************/
-nav {
-  overflow: hidden;
-  /* a cause de la position fixed le menu en mobile napparait pas */
-  position: fixed; 
-  /* *********************************** */
-  top: 0;
-  width: 100%;
-  background-color: #fafafc;
-  border-bottom: 1px solid #ccc;
+.body-menu {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.page-block {
+  padding: 0 1rem;
+}
+
+.page-block-content {
+  max-width: 80rem;
+  margin: auto;
+}
+/* Header */
+.header-main {
   display: flex;
-  justify-content: space-around;
-  z-index: 20;
+  /* justify-content: space-between; */
+  align-items: center;
+  height: 4rem;
+
 }
-.banner {
-  padding-top: 75px;
+.header-main .logo-main {
+  margin: auto;
 }
+
+.menu-main {
+  flex: 1;
+}
+.logo-main {
+  font-family: "permanent Maker", cursive;
+  font-size: 1.6rem;
+  margin-right: 1rem;
+}
+/* Use connect */
+.user_connect {
+  display: flex;
+  align-items: center;
+}
+#user-connect {
+  color: red;
+}
+.menu-main-item {
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0 0.5rem;
+  color: var(--text-color-light);
+}
+
+.menu-main-item:hover {
+  color: var(--main-color);
+}
+.menu-main-cta {
+  display: flex;
+  align-items: center;
+}
+
+.menu-main-cta ul {
+  display: flex;
+}
+
+ul,
+#barre-vertical #login-connect a {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* HAMBURGER */
+
+.hamburger-navigation label,
+#hamburger {
+  display: none;
+}
+
+.login-content {
+  height: 40vh;
+}
+
+.signUp-content {
+  height: 40vh;
+}
+
 .centered {
-  color: white;
   position: absolute;
-  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 /* taille Titre Banner */
-section .centered{
+section .centered {
   font-size: 30px;
+  color: white;
+  top: 11rem;
 }
 
-.centered-bis{
+.centered-bis {
   display: none;
 }
 nav .custom-switch {
@@ -73,116 +146,8 @@ nav form {
   margin: auto;
 }
 
-/* Use connect */
-nav .user_connect{
-  display: flex;
-  align-items: center;
-}
-
 .ant-image img {
   height: 200px;
-}
-
-.login-content {
-  height: 40vh;
-}
-
-.signUp-content {
-  height: 40vh;
-}
-
-.burger {
-  display: none;
-}
-
-#navG {
-  display: flex;
-  align-items: center;
-}
-
-#navG img {
-  height: 20px;
-  padding-right: 9px;
-}
-
-#navG ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-#navG a {
-  list-style: none;
-  transition: 0.5s;
-}
-
-#navG a:hover {
-  background-color: #d8d8d8;
-  color: #3dc1a7;
-  transition: 0.5s;
-}
-
-#navG a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  padding: 17px 9px;
-}
-
-#navD {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-#user-connect{
-  color: tomato;
-}
-
-.nav-switch span {
-  color: #333;
-  font-size: 14px;
-  padding: 17px 9px;
-} 
-#navD span {
-  color: #333;
-  font-size: 14px;
-  padding: 17px 9px;
-}
-
-#navD span:hover {
-  color: #3dc1a7;
-  transition: 0.5s;
-}
-
-#navD ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  margin-right: 90px;
-}
-
-#barre-vertical {
-  list-style: none;
-  padding: 0 9px;
-  border-right: 1px solid #333;
-}
-
-#login-connect{
-  padding: 0 9px;
-}
-
-#navD a:hover {
-  color: #3dc1a7;
-  transition: 0.5s;
-}
-
-/* #navD a:last-child {
-  border-right: none;
-} */
-#navD a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
 }
 
 /************************** MyCard **********************************/
@@ -292,14 +257,14 @@ section .home-content {
   display: flex;
   flex-direction: row-reverse;
 }
-.horaire-cards-content{
- text-align: center;
+.horaire-cards-content {
+  text-align: center;
 }
-.title-horaire h1{
+.title-horaire h1 {
   text-align: center;
 }
 
-.contact{
+.contact {
   text-align: center;
   margin: auto;
 }
@@ -440,11 +405,10 @@ th {
   margin: auto;
 }
 /********************FICHE INSCRIPTION *************************************/
-.formInscription input{
-
-margin-right: 40px;
+.formInscription input {
+  margin-right: 40px;
 }
-.form-group{
+.form-group {
   display: flex;
   flex-direction: column;
 }
@@ -544,7 +508,7 @@ input[type="date"]:focus::before {
 /* **************** FOOTER ************************ */
 
 footer {
-  background-color: #314456;
+  background-color: var(--footer-bg-color);
   border-top: 3px solid #3dc1a7;
   display: flex;
   height: 200px;
@@ -559,33 +523,32 @@ footer p {
   margin: 0;
   color: #6c757d;
 }
-  .active {
-    display: block;
-  }
-  
-  .shadowTab {
-    box-shadow: 7px 7px 5px #999;
-  }
+.active {
+  display: block;
+}
+
+.shadowTab {
+  box-shadow: 7px 7px 5px #999;
+}
 /* ************************************************* */
 
-@media screen and (max-width:1159px){
-
-  .centered{
+@media screen and (max-width: 1159px) {
+  .centered {
     display: none;
   }
-  
-  .centered-bis{
-    display: inline ;
+
+  .centered-bis {
+    display: inline;
     color: white;
     position: absolute;
-    top: 18%;
-    left: 50%;
+    top: 25rem;
+    left: 35rem;
     transform: translate(-50%, -50%);
     text-align: center;
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 860px) {
   body {
     margin: 0px;
     padding: 0px;
@@ -594,58 +557,63 @@ footer p {
     line-height: 30px;
   }
 
-  
   nav {
-
-    height: 40px;
+    height: 80px;
     justify-content: center;
   }
-  .banner {
+  /* .banner {
     padding-top: 40px;
-  }
-  .centered-bis{
-    display: inline ;
+  } */
+
+  .centered-bis {
+    display: inline;
     color: white;
     position: absolute;
-    top: 15%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
   }
 
-  #navG {
-    background-color: #475a6d;
-    flex-direction: column;
-  }
-  #navD a {
-    font-size: 12px;
+  .menu-main {
+    order: 1;
+    flex: 0;
   }
 
-  #navG ul {
-    flex-direction: column;
-    align-items: center;
+  .logo-main{
+    flex: 1;
+  }
+  .hamburger-navigation label{
+    display: inline-block;
+    font-size: 2rem;
+    padding: 01rem;
+
   }
 
-  .burger {
-    display: block;
-    color: #333;
-    font-size: 30px;
-    position: absolute;
-    top: 0;
-    left: 10px;
-    cursor: pointer;
-  }
-
-  aside {
+  .hamburger-items {
     display: none;
-    z-index: 100;
+    flex-direction: column;
     position: absolute;
-    top: 40px;
+    left: 0;
     width: 100%;
+    background-color: var(--bg-color);
+    /* border: 1px solid green; */
   }
 
+  .hamburger-items a {
+   text-align: center;
+   padding: 1rem;
+   border-bottom: 1px solid var(--harline-color);
+  }
+
+  .hamburger-navigation input:checked ~ .hamburger-items {
+    display: flex;
+    z-index: 25;
+    
+  }
+  
   /* Use connect */
-  nav .user_connect{
+  nav .user_connect {
     display: flex;
     align-items: center;
   }
@@ -664,12 +632,12 @@ footer p {
     display: none;
   }
 
-  #helpContact h2{
+  #helpContact h2 {
     color: #3dc1a7;
     font-size: 20px;
     font-weight: bold;
   }
-  .helpContactDetail{
+  .helpContactDetail {
     flex-direction: column;
   }
 }
@@ -680,7 +648,6 @@ footer p {
     line-height: 25px;
   }
 
-  
   /* H1 de la HOME */
   .article-content > p {
     font-size: 25px;
@@ -701,4 +668,3 @@ footer p {
     width: 210px;
   }
 }
-

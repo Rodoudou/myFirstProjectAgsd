@@ -9,28 +9,30 @@ const Menu = ({
 }) => {
 
   return (
-    <div>
-      <nav className="nav-switch">
-        <div className="burger">&#9776;</div>
-        <aside>
-          <div id="navG">
-            <ul>
-              <Link to="/">Accueil</Link>
-              <Link to="/horaires">Horaires</Link>
-              <Link to="/tarifs">Tarifs</Link>
-              <Link to="/inscription">Inscription</Link>
-              <Link to="/contact">Contact</Link>
-            </ul>
-          </div>
-        </aside>
+    <div className="body-menu">
+      <div className="page-block">
+      <header className="header-main page-block-content">
+      <p className="logo-main">AGSD COMBATA</p>
+        <nav className="menu-main hamburger-navigation">
+        <label htmlFor="hamburger">&#9776;</label>
+        <input type="checkbox" id="hamburger"/>
 
-        <div id="navD">
+            <div  className="hamburger-items">
+              <Link className="menu-main-item" to="/">Accueil</Link>
+              <Link className="menu-main-item" to="/horaires">Horaires</Link>
+              <Link className="menu-main-item" to="/tarifs">Tarifs</Link>
+              <Link className="menu-main-item" to="/inscription">Inscription</Link>
+              <Link className="menu-main-item" to="/contact">Contact</Link>
+            </div>
+        </nav>
+
+        <div className="menu-main-cta">
           <ul>
             {/* Faire appairaitre "M'inscrire" seulement si je ne suis pas isncrit */}
             {!token ? (
               <div id="barre-vertical">
                 {" "}
-                <Link to="signup">M'inscrire</Link>
+                <Link className="menu-main-item" to="signup">M'inscrire</Link>
               </div>
             ) : null}
 
@@ -38,7 +40,7 @@ const Menu = ({
 
             <div id="login-connect">
               {!token ? (
-                <Link to="/login">LogIn</Link>
+                <Link className="menu-main-item" to="/login">LogIn</Link>
               ) : (
                 <span className="btn-logOut" onClick={onLogout}>
                   LogOut
@@ -57,8 +59,10 @@ const Menu = ({
         ) : null}
         </div>
 
+      </header>
+
         
-      </nav>
+      </div>
     </div>
   );
 };
