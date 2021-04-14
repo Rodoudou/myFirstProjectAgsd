@@ -8,13 +8,13 @@ passport.use(
   new Strategy(
     {
       usernameField: "email",
-      passwordField: "password",
+      passwordField: "password"
     },
-    async (email, password, done) => {
+    async (email, password,done) => {
       try {
         const user = await UserModel.create({
           email,
-          password,
+          password
         });
         return done(null, user);
       } catch (error) {

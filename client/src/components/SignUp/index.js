@@ -1,11 +1,11 @@
 import React from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import Cookies from "js-cookie";
+import titles from '../../titres.json';
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ setUser, onLogin }) => {
+const SignUp = ({isDarkMode, setUser, onLogin }) => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, formState, errors, setError } = useForm({
@@ -48,7 +48,7 @@ const SignUp = ({ setUser, onLogin }) => {
 
   return (
     <div className="signUp-content">
-      <h1>Inscriptioon</h1>
+      <h1 className={isDarkMode?"titleLightMode":null}>{titles.titleSignUp}</h1>
       {isSubmitSuccessful && (
         <div className="alert alert-success">Merci pour votre inscription</div>
       )}

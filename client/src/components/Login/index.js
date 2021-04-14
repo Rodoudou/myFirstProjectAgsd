@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import Cookies from "js-cookie";
+import titles from '../../titres.json';
 
-const Login = ({ user, onLogin, isLog, setIsLog }) => {
+const Login = ({isDarkMode, user, onLogin, isLog, setIsLog }) => {
   console.log("user in login",user);
   const { register, handleSubmit, formState } = useForm({ mode: "onTouched" });
   const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
@@ -20,10 +20,11 @@ const Login = ({ user, onLogin, isLog, setIsLog }) => {
     try {
       const formData = data;
       const response = await axios.post("/login", formData);
+      alert(JSON.stringify(response.data));
       console.log("response",response);
 
       if (response.data.token) {
-        onLogin(response.data.token, response.data.email);
+        onLogin(response.data.token, response.data.username);
         navigate("/");
         setIsLog(!isLog);
       } else {
@@ -36,6 +37,7 @@ const Login = ({ user, onLogin, isLog, setIsLog }) => {
 
   return (
     <div className="login-content">
+  <h1 className={isDarkMode?"titleLightMode":null}>{titles.titleLogin} </h1>
       <Form onSubmit={handleSubmit(onSubmit)} action="Post" type="submit">
         <Form.Group controlId="formBasicEmail">
           <Form.Control

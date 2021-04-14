@@ -88,6 +88,7 @@ const App = () => {
           path="login"
           element={
             <Login
+              isDarkMode={isDarkMode}
               user={user}
               setUser={setUser}
               onLogin={onLogin}
@@ -100,6 +101,7 @@ const App = () => {
           path="signup"
           element={
             <Signup
+              isDarkMode={isDarkMode}
               onLogin={onLogin}
               token={token}
               setUser={setUser}

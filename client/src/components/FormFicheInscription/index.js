@@ -1,64 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+import { useForm } from "react-hook-form";
+import { Form, Button } from "react-bootstrap";
 import { Checkbox, Row, Col } from "antd";
-import { useInput } from "../../useInput";
+
 
 const FormFicheInscription = ({ isDarkMode, user }) => {
   // les States
-  const {
-    state: {
-      prenom,
-      name,
-      email,
-      phone,
-      sex,
-      date,
-      adresse,
-      city,
-      cdp,
-      activities,
-      droitImage,
-      certificatM,
-      photo,
-      autorisation,
-      assurance,
-    },
-    setState,
-    bind,
-    reset,
-  } = useInput({
-    prenom: "",
-    name: "",
-    email: "",
-    sex: "",
-    date: "",
-    adresse: "",
-    city: "",
-    cdp: "",
-    activities: [],
-    droitImage: [],
-    certificatM:[],
-    photo:[],
-    autorisation:[],
-    assurance:[],
+  const [droitImage, setDroitImage] = useState();
+  const [activities, setActivities] = useState();
+  const [certificatM, setCertificatMedical] = useState();
+  const [photo, setphoto] = useState();
+  const [autorisation, setAutorisation] = useState();
+  const [assurance, setAssurance] = useState();
+
+  const { register, handleSubmit, formState, errors, setError } = useForm({
+    mode: "onTouched",
   });
+  const { isSubmitting, isSubmitted, isSubmitSuccessful } = formState;
 
+  console.log(
+    `isSubmitted => ${isSubmitted}\n`,
+    `isSubmitSuccessful => ${isSubmitSuccessful}`
+  );
 
-  const handleSubmit = async (data) => {
+  const onSubmit = async (data) => {
+    console.log("formState fromFich =>", formState);
+    console.log(errors);
 
-    const formData = data;
-  
-    
-    console.log("formData in fiche-inscription =>", formData);
     try {
-      const response = await axios.post("/fiche-inscription", {formData});
-      
+      const formData = data;
+      formData.activities = activities;
+      formData.creator = user;
+
+      const response = await axios.post("/fiche-inscription", formData);
       alert(JSON.stringify(response.data));
 
-      // console.log("response.data", response.data);
-
-      //   reset()
+      console.log("formData in fiche-inscription =>", formData);
+      console.log("response", response);
     } catch (err) {
       if (err.response.status === 500) {
         console.error("An error occurred");
@@ -70,14 +49,14 @@ const FormFicheInscription = ({ isDarkMode, user }) => {
 
   const handleChangeActivity = (checkedValues) => {
     const activityChecked = checkedValues;
-    setState(activityChecked);
+    setActivities(activityChecked);
     console.log("activityChecked = ", activityChecked);
   };
 
   const handleChangeDroitImage = (checkedValues) => {
     const droitImageChecked = checkedValues;
     if (checkedValues) {
-      setState(!droitImage);
+      setDroitImage(!droitImage);
     }
     console.log("droitImageChecked = ", droitImageChecked);
   };
@@ -85,28 +64,28 @@ const FormFicheInscription = ({ isDarkMode, user }) => {
   const handleChangeCertif = (e) => {
     const newCertif = e.target.files;
     if (newCertif.length > 0) {
-      setState(newCertif[0]);
+      setCertificatMedical(newCertif[0]);
     }
   };
 
   const handleChangePhoto = (e) => {
     const newPhoto = e.target.files;
     if (newPhoto.length > 0) {
-      setState(newPhoto[0]);
+      setphoto(newPhoto[0]);
     }
   };
 
   const handleChangeAuthorisation = (e) => {
     const newAutorisation = e.target.files;
     if (newAutorisation.length > 0) {
-      setState(newAutorisation[0]);
+      setAutorisation(newAutorisation[0]);
     }
   };
 
   const handleChangeAssurace = (e) => {
     const newAssurance = e.target.files;
     if (newAssurance.length > 0) {
-      setState(newAssurance[0]);
+      setAssurance(newAssurance[0]);
     }
   };
 
@@ -114,68 +93,117 @@ const FormFicheInscription = ({ isDarkMode, user }) => {
     <div className="formInscription">
       <div className="content">
         <p style={{ fontSize: "35px" }}> Formulaire d'inscription</p>
-        {/* {isSubmitSuccessful && (
+        {isSubmitSuccessful && (
           <div className="alert alert-success">
             Merci pour votre inscription
           </div>
-        )} */}
+        )}
 
-        <form
+        <Form
           className="ficheInscription"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           type="submit"
         >
           <div>
-            <div>
-              <input type="text" name="name" value={name} {...bind} />
-            </div>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                name="lastname"
+                defaultValue="Amrani"
+                ref={register({ required: "Vous devez rentrer votre nom" })}
+              />
+            </Form.Group>
 
-            <div>
-              <input type="text" name="prenom" value={prenom} {...bind} />
-            </div>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                name="firstname"
+                defaultValue="Redouane"
+                ref={register({ required: "Vous devez rentrer votre prénom" })}
+              />
+            </Form.Group>
           </div>
           <div>
-            <div>
-              <input type="date" name="date" value={date} {...bind} />
-            </div>
+            <Form.Group>
+              <Form.Control
+                type="date"
+                name="date"
+                ref={register({
+                  required: "Vous devez rentrer votre date de naissance",
+                })}
+              />
+            </Form.Group>
 
-            {/* <div id="formGroup-option" controlId="formBasicSex">
-              <input as="select" name="sex" ref={register}>
+            <Form.Group id="formGroup-option" controlId="formBasicSex">
+              <Form.Control as="select" name="sex" ref={register}>
                 <option>Feminin</option>
                 <option>Masculin</option>
-              </input>
-            </div> */}
+              </Form.Control>
+            </Form.Group>
           </div>
 
           <div>
-            <div>
-              <input type="email" name="email" value={email} {...bind} />
-            </div>
-
-            <div>
-              <input type="tel" name="phone" value={phone} {...bind} />
-            </div>
-          </div>
-          <div>
-            <div>
-              <input type="text" name="adresse" value={adresse} {...bind} />
-            </div>
-
-            <div>
-              <input type="text" name="cdp" value={cdp} {...bind} />
-            </div>
-          </div>
-
-          <div>
-            <div>
-              <input
-                type="text"
-                placeholder="Ville"
-                name="city"
-                value={city}
-                {...bind}
+            <Form.Group controlId="formBasicEmail">
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                name="email"
+                defaultValue="aurele75@email.com"
+                ref={register({ required: "Vous devez rentrer votre email" })}
               />
-            </div>
+              {errors.email && <span>{errors.email.message}</span>}
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPhone">
+              <Form.Control
+                type="tel"
+                placeholder="Phone"
+                name="phone"
+                defaultValue="0633155262"
+                ref={register({
+                  required: "Vous devez rentrer votre téléphone",
+                })}
+              />
+              {errors.phone && <span>{errors.phone.message}</span>}
+            </Form.Group>
+          </div>
+          <div>
+            <Form.Group controlId="formBasicPhone">
+              <Form.Control
+                type="text"
+                placeholder="Adresse"
+                name="adresse"
+                defaultValue="33 rue du sergent beauchat"
+                ref={register({ required: "Vous devez rentrer votre adresse" })}
+              />
+              {errors.phone && <span>{errors.adresse.message}</span>}
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPhone">
+              <Form.Control
+                type="text"
+                placeholder="Code postale"
+                name="cdp"
+                defaultValue="75012"
+                ref={register({
+                  required: "Vous devez rentrer votre code postale",
+                })}
+              />
+              {errors.phone && <span>{errors.cdp.message}</span>}
+            </Form.Group>
+          </div>
+
+          <div>
+            <Form.Group controlId="formBasicPhone">
+              <Form.Control
+                type="text"
+                placeholder="ville"
+                name="city"
+                defaultValue="Paris"
+                ref={register({ required: "Vous devez rentrer votre ville" })}
+              />
+              {errors.phone && <span>{errors.city.message}</span>}
+            </Form.Group>
           </div>
 
           <p style={{ fontSize: "20px" }}>Activités choisies</p>
@@ -242,54 +270,54 @@ const FormFicheInscription = ({ isDarkMode, user }) => {
           <br />
 
           <p style={{ fontSize: "20px" }}>Documents à nous renvoyer</p>
-          <div className=" downloadfile col-sm-9 formControls">
-            {/* <div>
+          {/* <div className=" downloadfile col-sm-9 formControls">
+            <div>
               <label>Certificat Médical</label>
               <input
                 style={{ fontSize: 15 }}
                 type="file"
                 name="certificatM"
-                value={certificatM || ''}
+                value={certificatM === "" && certificatM}
                 onChange={handleChangeCertif}
               />
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <label>Photos d'Identité</label>
               <input
                 style={{ fontSize: 15 }}
                 type="file"
                 name="photo"
-                value={photo}
+                value={photo === "" && photo}
                 onChange={handleChangePhoto}
               />
-            </div> */}
+            </div>
             <div>
               <label>Autorisation Parentale</label>
               <input
                 style={{ fontSize: 15 }}
                 type="file"
                 name="autorisation"
-                value={autorisation}
+                value={autorisation === "" && autorisation}
                 onChange={handleChangeAuthorisation}
               />
             </div>
-            {/* <div>
+            <div>
               <label>Assurance</label>
               <input
                 style={{ fontSize: 15 }}
                 type="file"
                 data-rsfp-size="10485760"
                 name="assurance"
-                value={assurance}
+                value={assurance === "" && assurance}
                 onChange={handleChangeAssurace}
               />
-            </div> */}
-          </div>
+            </div>
+          </div> */}
           <br />
           <button variant="primary" type="submit">
             Envoyer
           </button>
-        </form>
+        </Form>
       </div>
     </div>
   );

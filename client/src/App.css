@@ -59,7 +59,6 @@ body {
   /* justify-content: space-between; */
   align-items: center;
   height: 4rem;
-
 }
 .header-main .logo-main {
   margin: auto;
@@ -69,10 +68,11 @@ body {
   flex: 1;
 }
 .logo-main {
-  font-family: "permanent Maker", cursive;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   margin-right: 1rem;
 }
+
 /* Use connect */
 .user_connect {
   display: flex;
@@ -105,6 +105,8 @@ ul,
   margin: 0px;
   padding: 0px;
 }
+
+
 
 /* HAMBURGER */
 
@@ -532,21 +534,7 @@ footer p {
 }
 /* ************************************************* */
 
-@media screen and (max-width: 1159px) {
-  .centered {
-    display: none;
-  }
 
-  .centered-bis {
-    display: inline;
-    color: white;
-    position: absolute;
-    top: 25rem;
-    left: 35rem;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-}
 
 @media screen and (max-width: 860px) {
   body {
@@ -556,21 +544,21 @@ footer p {
     font-size: 14px;
     line-height: 30px;
   }
+  .centered {
+    display: none;
+  }
 
   nav {
     height: 80px;
     justify-content: center;
   }
-  /* .banner {
-    padding-top: 40px;
-  } */
 
   .centered-bis {
     display: inline;
     color: white;
     position: absolute;
-    top: 40%;
-    left: 50%;
+    top: 10rem;
+    left: 16rem;
     transform: translate(-50%, -50%);
     text-align: center;
   }
@@ -580,16 +568,17 @@ footer p {
     flex: 0;
   }
 
-  .logo-main{
+  .logo-main {
     flex: 1;
   }
-  .hamburger-navigation label{
+  .hamburger-navigation label {
     display: inline-block;
     font-size: 2rem;
     padding: 01rem;
-
   }
-
+  .hamburger-navigation label:hover {
+    cursor: pointer;
+  }
   .hamburger-items {
     display: none;
     flex-direction: column;
@@ -601,17 +590,16 @@ footer p {
   }
 
   .hamburger-items a {
-   text-align: center;
-   padding: 1rem;
-   border-bottom: 1px solid var(--harline-color);
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--harline-color);
   }
 
   .hamburger-navigation input:checked ~ .hamburger-items {
     display: flex;
     z-index: 25;
-    
   }
-  
+
   /* Use connect */
   nav .user_connect {
     display: flex;

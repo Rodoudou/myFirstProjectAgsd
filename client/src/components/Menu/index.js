@@ -40,10 +40,10 @@ const Menu = ({
 
             <div id="login-connect">
               {!token ? (
-                <Link className="menu-main-item" to="/login">LogIn</Link>
+                <Link className="menu-main-item" to="/login">Se connecter</Link>
               ) : (
-                <span className="btn-logOut" onClick={onLogout}>
-                  LogOut
+                <span className="btn-logOut menu-main-item" onClick={onLogout}>
+                  Se déconnecter
                 </span>
               )}
             </div>
